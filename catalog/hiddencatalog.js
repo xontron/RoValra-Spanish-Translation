@@ -1,3 +1,11 @@
+/*
+NOTES:
+        - Translation done? ✅
+        math is not for me, 
+        that's for sure
+
+
+*/
 let checkInterval;
 let currentMode = localStorage.getItem('hiddenCatalogMode') || 'dark';
 
@@ -15,7 +23,7 @@ const initHiddenCatalog = () => {
             const robuxButtonLink = robuxButtonContainer.querySelector('a.robux-menu-btn');
 
             if (robuxButtonLink) {
-                robuxButtonLink.textContent = 'Hidden Catalog';
+                robuxButtonLink.textContent = 'Catálogo Oculto';
                 robuxButtonLink.href = '/hidden-catalog';
                 robuxButtonLink.target = "_self";
                 clearInterval(checkInterval);
@@ -143,7 +151,7 @@ function removeHiddenCatalogContent() {
             headerContainer.style.alignItems = 'center';
 
             const header = document.createElement('h1');
-            header.textContent = 'Hidden Catalog';
+            header.textContent = 'Catálogo Oculto ';
             header.style.fontWeight = '800';
             header.style.padding = '20px 0px 20px 10px';
             header.style.fontSize = '2em';
@@ -170,11 +178,15 @@ function removeHiddenCatalogContent() {
             descriptionElement.style.paddingLeft = '0px'
             descriptionElement.style.marginBottom = '0px';
             descriptionElement.style.marginTop = '50px';
-            descriptionElement.style.marginRight = 'auto';
+            descriptionElement.style.marginRight = 'default';
             descriptionElement.innerHTML = `
-                <p>The Hidden Catalog shows items uploaded by Roblox which are not yet on the marketplace.</p>
-                <p>Keep in mind that some of these items may never be released, as they could have been test uploads by Roblox.</p>
-                <p><b>To open the item page you will need <a href="https://www.roseal.live/" target="_blank" style="text-decoration: underline;">RoSeal</a>
+                <p><center>El Catálogo Oculto muestra artículos subidos por Roblox que aún no están en el mercado oficialmente.</center></p>
+                <p>❗ Ten en cuenta que es posible que algunos de estos artículos nunca lleguen a publicarse, ya que podrían haber sido subidas de prueba por Roblox. ❗</p>
+                <hr>
+                <br>
+                <p><center><b>Para abrir o usar esta página, necesitarás de disponer la extensión <a href="https://www.roseal.live/" target="_blank" style="text-decoration: underline;">RoSeal</center></a>
+                <br>
+                <hr>
             `;
             contentDiv.appendChild(descriptionElement);
 
@@ -397,7 +409,7 @@ async function displayItems(itemsWithDetails) {
 
         if (item.details && item.details.ProductId !== 0) {
             const releasedLabel = document.createElement('div');
-            releasedLabel.textContent = 'Released';
+            releasedLabel.textContent = 'Ya lanzado'; // Released
             releasedLabel.className = 'released-label';
             releasedLabel.style.position = 'absolute';
             releasedLabel.style.color = 'white';
@@ -535,7 +547,7 @@ async function displayItems(itemsWithDetails) {
 
             if (item.details && item.details.ProductId !== 0) {
                 const releasedLabel = document.createElement('div');
-                releasedLabel.textContent = 'Released';
+                releasedLabel.textContent = 'Ya lanzado'; // Released
                 releasedLabel.className = 'released-label';
                 releasedLabel.style.position = 'absolute';
                 releasedLabel.style.color = 'white';
@@ -567,7 +579,7 @@ async function displayItems(itemsWithDetails) {
                     thumbnailContainer.innerHTML = '';
                     if (item.details && item.details.ProductId !== 0) {
                         const releasedLabel = document.createElement('div');
-                        releasedLabel.textContent = 'Released';
+                        releasedLabel.textContent = 'Ya lanzado'; // Released
                         releasedLabel.className = 'released-label';
                         releasedLabel.style.position = 'absolute';
                         releasedLabel.style.color = 'white';
@@ -622,7 +634,7 @@ async function displayItems(itemsWithDetails) {
                     thumbnailImage.style.display = 'block';
                     if (item.details && item.details.ProductId !== 0) {
                         const releasedLabel = document.createElement('div');
-                        releasedLabel.textContent = 'Released';
+                        releasedLabel.textContent = 'Ya lanzado'; // Released
                         releasedLabel.className = 'released-label';
                         releasedLabel.style.backgroundColor = '#e57b00';
                         releasedLabel.style.position = 'absolute';
@@ -642,7 +654,7 @@ async function displayItems(itemsWithDetails) {
                     thumbnailContainer.style.backgroundColor = '';
                     if (item.details && item.details.ProductId !== 0) {
                         const releasedLabel = document.createElement('div');
-                        releasedLabel.textContent = 'Released';
+                        releasedLabel.textContent = 'Ya lanzado'; // Released
                         releasedLabel.className = 'released-label';
                         releasedLabel.style.position = 'absolute';
                         releasedLabel.style.top = '5px';
@@ -674,7 +686,7 @@ async function displayItems(itemsWithDetails) {
                 thumbnailContainer.style.backgroundColor = '';
                 if (item.details && item.details.ProductId !== 0) {
                     const releasedLabel = document.createElement('div');
-                    releasedLabel.textContent = 'Released';
+                    releasedLabel.textContent = 'Ya lanzado'; // Released
                     releasedLabel.className = 'released-label';
                     releasedLabel.style.position = 'absolute';
                     releasedLabel.style.top = '5px';

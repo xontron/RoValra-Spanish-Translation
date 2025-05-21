@@ -1,3 +1,13 @@
+/*
+NOTES:
+        - Translation done? 🥖
+        im hungry, also yes i think
+        this one has a lot of console warnings,
+        a rather not touch it a lot
+
+
+
+*/
 const REQUEST_LIMIT = 5;
 let requestQueue = [];
 let lastRequestTime = 0;
@@ -76,7 +86,8 @@ async function fetchUserIdFromUsername(username) {
                 if (!isRateLimited) {
                     isRateLimited = true;
                     rateLimitStartTime = Date.now()
-                    console.warn("Too many user lookup requests, attempting to spam until un-rate-limited.");
+                    // Too many user lookup requests, attempting to spam until un-rate-limited.
+                    console.warn("Se han hecho muchas solicitudes para buscar dicho usuario, intentando de solicitar hasta que se elimite el limite de velocidad.");
                 }
                 const delay = Math.random() * 1000 + 2300;
                 await new Promise(resolve => setTimeout(resolve, delay));
@@ -89,7 +100,7 @@ async function fetchUserIdFromUsername(username) {
                 rateLimitStartTime = 0;
             }
             if (!response.ok) {
-                console.error("Failed to fetch user ID:", response.status, response.statusText);
+                console.error("No se ha podido encontrar el ID del usuario:", response.status, response.statusText); // Failed to fetch user ID
                 return null;
             }
             const data = await response.json();
@@ -100,7 +111,7 @@ async function fetchUserIdFromUsername(username) {
             }
             retries = maxRetries + 1
         } catch (error) {
-            console.error("Error fetching user ID:", error);
+            console.error("Error al intentar encontrar el ID del usuario:", error); // Error fetching user ID:
             return null;
         }
     }
@@ -166,7 +177,8 @@ async function fetchServers(placeId, initialImageUrl, updateRequestCount, update
                         isRateLimited = true;
                         rateLimitStartTime = Date.now()
                         isRateLimitedOnThisRequest = true
-                        setRateLimitMessage("Roblox is rate-limiting the requests. Gonna take a bit.");
+                        // Roblox is rate-limiting the requests. Gonna take a bit
+                        setRateLimitMessage("Roblox está limitando sus solicitudes. Tomará un tiempito. :p"); // :p
                     }
                     const delay = Math.random() * 1000 + 2300;
                     await new Promise(resolve => setTimeout(resolve, delay));
@@ -216,7 +228,7 @@ async function fetchServers(placeId, initialImageUrl, updateRequestCount, update
                     previousSearch.nextPageCursor = null;
                     localStorage.setItem('previousSearch', JSON.stringify(previousSearch));
                     if (!found) {
-                        setNotFoundMessage("User Not Found");
+                        setNotFoundMessage("Usuario no encontrado"); // Usuario no encontrado
                     }
                     if (onComplete) {
                         onComplete()
@@ -230,7 +242,7 @@ async function fetchServers(placeId, initialImageUrl, updateRequestCount, update
 
                 retries = maxRetries + 1;
             } catch (error) {
-                console.error("Error fetching servers:", error);
+                console.error("Error al buscar los servidores:", error); // Error fetching servers:
                 if (onComplete) {
                     onComplete()
                 }
@@ -387,7 +399,8 @@ async function fetchInitialThumbnail(targetid, updateRateLimitCount, isCancelled
                         updateRateLimitCount();
                     }
                     isRateLimitedOnThisRequest = true
-                    console.warn("Too many initial thumbnail requests, attempting to spam until un-rate-limited.");
+                    // Too many initial thumbnail requests, attempting to spam until un-rate-limited.
+                    console.warn("Demasiadas solicitudes iniciales de miniaturas, intentando hacer spam hasta que se elimine el límite de velocidad.");
                 }
                 const delay = Math.random() * 10 + 20;
                 await new Promise(resolve => setTimeout(resolve, delay));
@@ -455,7 +468,7 @@ function createSniperUI() {
 
     const inputField = document.createElement('input');
     inputField.type = 'text';
-    inputField.placeholder = 'User ID or Username';
+    inputField.placeholder = 'Nombre o ID del usuario'; // User ID or Username
     inputField.style.cssText = `
             margin-bottom: 0px;
             padding: 8px;
@@ -471,7 +484,7 @@ function createSniperUI() {
     inputField.value = previousSearch.userId || '';
 
     const startButton = document.createElement('button');
-    startButton.textContent = 'Search';
+    startButton.textContent = 'Buscar'; // Buscar
     startButton.style.cssText = `
         padding: 5px 15px;
         background-color: var(--button-background);
@@ -490,7 +503,7 @@ function createSniperUI() {
     startButton.classList.add('sniper-button');
 
     const requestCountLabel = document.createElement('span');
-    requestCountLabel.textContent = 'Servers Searched:';
+    requestCountLabel.textContent = 'Servidores Encontrados:'; // Servers Searched:
     requestCountLabel.style.cssText = `
         color: var(--text-color-stuff);
         font-size: 16px;
@@ -520,7 +533,7 @@ function createSniperUI() {
 
 
     const elapsedTimeLabel = document.createElement('span');
-    elapsedTimeLabel.textContent = 'Time:';
+    elapsedTimeLabel.textContent = 'Tiempo:'; // Time:
     elapsedTimeLabel.style.cssText = `
         color: var(--text-color-stuff);
         font-size: 16px;
@@ -626,7 +639,7 @@ function injectButton() {
     const { thumbnailImage, inputField, startButton, requestCountDisplay, elapsedTimeDisplay, displayContainer, requestCountNumber, elapsedTimeNumber } = sniperUIElements;
 
     const sniperHeaderLabel = document.createElement('div');
-    sniperHeaderLabel.textContent = 'User Sniper';
+    sniperHeaderLabel.textContent = 'User Sniper'; // User Sniper
     sniperHeaderLabel.style.cssText = `
         color: var(--text-color-header);
         font-size: 18px;
@@ -639,7 +652,8 @@ function injectButton() {
     `;
 
     const sniperWarningLabel = document.createElement('div');
-    sniperWarningLabel.textContent = 'WARNING: Roblox updated making the sniper fail 80% of the time.';
+    // WARNING: Roblox updated making the sniper fail 80% of the time.
+    sniperWarningLabel.textContent = 'AVISO: Roblox ha actualizado la forma en como esto se usa, causando a que el sniper falle 80% de las veces.';
     sniperWarningLabel.style.cssText = `
         color: var(--text-color-header);
         font-size: 14px;

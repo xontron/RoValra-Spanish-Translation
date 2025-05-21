@@ -1,3 +1,9 @@
+/*
+NOTES:
+        - Translation done? ✅
+
+
+*/
 let currentTheme = 'light';
 
 window.addEventListener('themeDetected', (event) => {
@@ -181,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     let displayedGameCount = 0;
                     const loadMoreButton = document.createElement('button');
-                    loadMoreButton.textContent = 'Load More';
+                    loadMoreButton.textContent = 'Cargar Más'; // Load More
                     loadMoreButton.classList.add('load-more-button', 'tab-button');
                     loadMoreButton.style.display = 'inline-block';
                     loadMoreButton.style.position = 'relative';
@@ -372,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     if (allHiddenGames.length === 0) {
                         const noGames = document.createElement('p');
-                        noGames.textContent = "No hidden experiences  found.";
+                        noGames.textContent = "No se han encontrado experiencias/juegos ocultos."; // No hidden experiences  found.
                         noGames.style.gridColumn = '1 / -1';
                         hiddenGamesContainer.appendChild(noGames);
                         loadMoreButtonWrapper.style.display = 'none'
@@ -389,11 +395,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
                     const gamesButton = document.createElement('button');
-                    gamesButton.textContent = "Experiences";
+                    gamesButton.textContent = "Experiencias / Juegos";
                     gamesButton.classList.add('tab-button', 'active-tab');
 
                     const hiddenGamesButton = document.createElement('button');
-                    hiddenGamesButton.textContent = "Hidden Experiences";
+                    hiddenGamesButton.textContent = "Experiencias ocultas";
                     hiddenGamesButton.classList.add('tab-button');
                     hiddenGamesButton.addEventListener('click', () => {
                         switcherContainer.style.display = 'none';
@@ -458,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     let displayedGameCount = 0;
                     const loadMoreButton = document.createElement('button');
-                    loadMoreButton.textContent = 'Load More';
+                    loadMoreButton.textContent = 'Cargar Más'; // Load More
                     loadMoreButton.classList.add('load-more-button', 'tab-button');
                     loadMoreButton.style.display = 'none';
                     loadMoreButton.style.position = 'relative';
@@ -637,7 +643,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     applyTheme()
                     if (allHiddenGames.length === 0) {
                         const noGames = document.createElement('p');
-                        noGames.textContent = "No hidden experiences found.";
+                        noGames.textContent = "No se han encontrado experiencias/juegos ocultos."; // No hidden experiences found.
                         noGames.style.gridColumn = '1 / -1';
                         hiddenGamesContainer.appendChild(noGames);
                          loadMoreButtonWrapper.style.display = 'none'
@@ -653,12 +659,12 @@ document.addEventListener('DOMContentLoaded', function() {
                      }
                     experiencesContainer.parentNode.appendChild(hiddenGamesWrapper);
                     const experiencesButton = document.createElement('button');
-                    experiencesButton.textContent = "Experiences";
+                    experiencesButton.textContent = "Experiencias / Juegos";
                     experiencesButton.classList.add('tab-button', 'active-tab');
 
 
                     const hiddenGamesButton = document.createElement('button');
-                    hiddenGamesButton.textContent = "Hidden Experiences";
+                    hiddenGamesButton.textContent = "Experiencias ocultas";
                     hiddenGamesButton.classList.add('tab-button');
 
                     let headerContainer = document.querySelector('.container-header');

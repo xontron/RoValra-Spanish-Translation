@@ -1,3 +1,12 @@
+/*
+NOTES:
+        - Translation done? ❌
+
+        uhm, one of these ItemCheckers got so fucked up,
+        it's quite sensitive
+
+
+*/
 (function() {
     if (!window.location.href.includes("profile")) {
         return;

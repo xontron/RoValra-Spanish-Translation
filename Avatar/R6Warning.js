@@ -1,3 +1,10 @@
+/*
+NOTES:
+        - Translation done?
+        I rather not touch this :p
+
+
+*/
 (function() {
     const currentURL = window.location.href;
       const avatarPathRegex = /\/my\/avatar$/;

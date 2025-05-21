@@ -1,4 +1,11 @@
-(function() {
+/*
+NOTES:
+        - Translation done? ❌
+        
+            IT WAS YOU, I SAW
+
+
+*/(function() {
     const checkStorageAndRun = async () => {
         try {
             if (typeof chrome !== 'undefined' && chrome.storage) {

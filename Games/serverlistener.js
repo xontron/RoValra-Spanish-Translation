@@ -1,4 +1,10 @@
+/*
+NOTES:
+        - Translation done? 
+        dont touch this code kro
 
+
+*/
 chrome.storage.local.get({ ServerdataEnabled: false}, function(settings) { 
     if (settings.ServerdataEnabled) {
 (function() {

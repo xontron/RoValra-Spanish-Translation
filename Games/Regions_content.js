@@ -1,3 +1,17 @@
+/*
+NOTES:
+        - Translation done? ✅
+
+        come with me and you'll be in a 
+        world of pure imagination
+
+
+
+
+        (what am i doing with my life)
+
+
+*/
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -25,22 +39,22 @@ chrome.storage.local.get({
     ];
 
     const regionCoordinates = {
-        "SG": { latitude: 1.3521, longitude: 103.8198, city: "Singapore", state: null, country: "Singapore" }, 
-        "DE": { latitude: 50.1109, longitude: 8.6821, city: "Frankfurt", state: null, country: "Germany" }, 
-        "FR": { latitude: 48.8566, longitude: 2.3522, city: "Paris", state: null, country: "France" }, 
-        "JP": { latitude: 35.6895, longitude: 139.6917, city: "Tokyo", state: null, country: "Japan" }, 
-        "BR": { latitude: -14.2350, longitude: -51.9253, city: "Brazil", state: null, country: "Brazil" }, 
-        "NL": { latitude: 52.3676, longitude: 4.9041, city: "Amsterdam", state: null, country: "Netherlands" }, 
-        "US-CA": { latitude: 34.0522, longitude: -118.2437, city: "Los Angeles", state: "California", country: "United States" }, 
-        "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "United States" }, 
-        "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "United States" }, 
-        "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "United States" }, 
-        "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "United States" }, 
-        "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "New York City", state: "New York", country: "United States" }, 
-        "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "United States" }, 
-        "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sydney", state: null, country: "Australia" }, 
-        "GB": { latitude: 51.5074, longitude: -0.1278, city: "London", state: null, country: "United Kingdom" }, 
-        "IN": { latitude: 19.0760, longitude: 72.8777, city: "Mumbai", state: null, country: "India" }  
+        "SG": { latitude: 1.3521, longitude: 103.8198, city: "Singapur", state: null, country: "Singapur" }, 
+        "DE": { latitude: 50.1109, longitude: 8.6821, city: "Fráncfort", state: null, country: "Alemania" }, 
+        "FR": { latitude: 48.8566, longitude: 2.3522, city: "París", state: null, country: "Francia" }, 
+        "JP": { latitude: 35.6895, longitude: 139.6917, city: "Tokio", state: null, country: "Japón" }, 
+        "BR": { latitude: -14.2350, longitude: -51.9253, city: "Brasil", state: null, country: "Brasil" }, 
+        "NL": { latitude: 52.3676, longitude: 4.9041, city: "Ámsterdam", state: null, country: "Países Bajos" }, 
+        "US-CA": { latitude: 34.0522, longitude: -118.2437, city: "Los Ángeles", state: "California", country: "Estados Unidos" }, 
+        "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "Estados Unidos" }, 
+        "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "Estados Unidos" }, 
+        "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "Estados Unidos" }, 
+        "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "Estados Unidos" }, 
+        "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "Nueva York", state: "Nueva York", country: "Estados Unidos" }, 
+        "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "Estados Unidos" }, 
+        "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sídney", state: null, country: "Australia" }, 
+        "GB": { latitude: 51.5074, longitude: -0.1278, city: "Londres", state: null, country: "Reino Unido" }, 
+        "IN": { latitude: 19.0760, longitude: 72.8777, city: "Bombay", state: null, country: "India" }
     };
 
 
@@ -1332,7 +1346,7 @@ chrome.storage.local.get({
 
         const regionDropdownButton = document.createElement('button');
         regionDropdownButton.id = 'regionDropdownButton';
-        regionDropdownButton.textContent = 'Regions';
+        regionDropdownButton.textContent = 'Regiones';
 
         const globeSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         globeSVG.setAttribute("width", "17"); 
@@ -1411,7 +1425,7 @@ chrome.storage.local.get({
         iconImage.style.marginLeft = '5px'; 
 
         const explanationText = document.createElement('p');
-        explanationText.textContent = "RoValra Region Selector";
+        explanationText.textContent = "Selector de Regiones - RoValra";
         explanationText.style.color = isDarkMode ? 'white' : 'rgb(39, 41, 48)';
         explanationText.style.textAlign = 'center'; 
         explanationText.style.fontSize = '20px';
@@ -1726,7 +1740,7 @@ chrome.storage.local.get({
 
         const title = document.createElement('h1');
         const locationData = getFullLocationName(region); 
-        title.textContent = `Servers in ${locationData}`;
+        title.textContent = `Servidores en ${locationData}`;
         title.style.marginBottom = '0px';
         title.style.textAlign = "left";
         title.style.marginLeft = "0px";
@@ -1745,9 +1759,9 @@ chrome.storage.local.get({
         sortDropdown.style.marginLeft = 'auto';
 
         const sortOptions = [
-            { value: 'ping_lowest', text: 'Lowest Ping' },
-            { value: 'players_highest', text: 'Highest Player Count' },
-            { value: 'players_lowest', text: 'Lowest Player Count' }
+            { value: 'ping_lowest', text: 'Ping más bajo' }, // It was lowest ping smt smt, im tired dude
+            { value: 'players_highest', text: 'Servidores con más jugadores' }, //Highest Player Count
+            { value: 'players_lowest', text: 'Servidores con menos jugadores' }
         ];
 
         sortOptions.forEach(option => {
@@ -1766,7 +1780,7 @@ chrome.storage.local.get({
 
 
         const closeButton = document.createElement('button');
-        closeButton.textContent = 'Close';
+        closeButton.textContent = 'Cerrar';
         closeButton.style.padding = '8px 12px';
         closeButton.style.backgroundColor = isDarkMode ? '#d11a2a' : '#d93025';
         closeButton.style.border = isDarkMode ? '1px solid #b50e1c' : '1px solid #d93025';
@@ -1989,8 +2003,9 @@ chrome.storage.local.get({
                 if (isServerUnknownPing) {
                     return null; 
                 }
-    
-                playerCountText.textContent = `${server.playing} of ${server.maxPlayers} people max`;
+
+                //${server.playing} of ${server.maxPlayers} people max
+                playerCountText.textContent = `Maximo de personas ${server.maxPlayers} de ${server.playing} jugando.`;
                 serverDetails.appendChild(playerCountText);
                 server.calculatedPing = pingValue === "Unknown" ? Infinity : parseInt(pingValue.replace('ms', ''));
                 pingText.textContent = `Ping: ${pingValue}`;
@@ -2011,7 +2026,8 @@ chrome.storage.local.get({
                 }
                 const pingTooltip = document.createElement('div');
                 pingTooltip.className = 'ping-tooltip';
-                pingTooltip.textContent = 'The ping is an approximation and may not be entirely accurate.';
+                // The ping is an approximation and may not be entirely accurate.
+                pingTooltip.textContent = 'El ping es una aproximación y puede resultar inexacta.';
                 pingTooltip.style.position = 'absolute';
                 pingTooltip.style.backgroundColor = isDarkMode ? '#444' : '#eee';
                 pingTooltip.style.color = isDarkMode ? 'white' : 'black';
@@ -2047,7 +2063,7 @@ chrome.storage.local.get({
                 bottomRow.style.alignItems = 'center';
                 bottomRow.style.gap = '5px';
                 const joinButton = document.createElement('button');
-                joinButton.textContent = 'Join';
+                joinButton.textContent = 'Unirte';
                 joinButton.className = 'server-button join-button';
                 joinButton.style.backgroundColor = isDarkMode ? 'rgb(51, 95, 255)' : 'rgb(51, 95, 255)';
                 joinButton.style.color = 'white';
@@ -2068,7 +2084,7 @@ chrome.storage.local.get({
                     }
                 });
                 const shareButton = document.createElement('button');
-                shareButton.textContent = 'Share';
+                shareButton.textContent = 'Compartir';
                 shareButton.className = 'server-button share-button';
                 shareButton.style.backgroundColor = isDarkMode ? '#555' : '#ddd';
                 shareButton.style.color = isDarkMode ? 'white' : '#333';
@@ -2079,11 +2095,12 @@ chrome.storage.local.get({
                 shareButton.addEventListener('click', () => {
                     const linkToCopy = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${serverId}`;
                     navigator.clipboard.writeText(linkToCopy).then(() => {
-                    shareButton.textContent = 'Copied';
+                    shareButton.textContent = '¡Copiado!';
                     setTimeout(() => { shareButton.textContent = 'Share'; }, 5000);
                     }).catch(err => {
                         console.error('Failed to copy link: ', err);
-                        alert('Failed to copy server link to clipboard.');
+                        // Failed to copy server link to clipboard
+                        alert('Hubo un error al copiar el enlace del servidor al portapapeles.');
                         setTimeout(() => { shareButton.textContent = 'Share'; }, 5000);
                     });
                 });

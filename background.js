@@ -1,11 +1,17 @@
+
+
 // Dont look at this shit dookie poo po of code
 // Actually you can look at it. i removed the bad parts / useless
 
 
+/*
+NOTES:
+        - Translation done? ✅
+        
+        Psst. why is the json formatting so strict?
 
 
-
-
+*/
 
 
 
@@ -230,11 +236,11 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
                   const newTabContent = `
                       <html>
                       <head>
-                          <title>Hidden Games</title>
+                          <title>Juegos escondidos</title>
                       </head>
                       <body>
-                          <h1>Hidden Games for User ${userId}</h1>
-                          ${newTabHtml || "<p>No hidden games found.</p>"}
+                          <h1>Juegos escondidos por el Usuario ${userId}</h1>
+                          ${newTabHtml || "<p>No se han encontrado juegos escondidos.</p>"}
                       </body>
                       </html>
                   `;

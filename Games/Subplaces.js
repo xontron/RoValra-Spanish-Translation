@@ -1,3 +1,16 @@
+/* 
+
+NOTES:
+        - Translation done? ✅
+
+
+ENHACEMENTS MADE:
+
+ - Subplaces searchbar has been centralized, translated, and made more visually appealing. (ln. 183 - 188)
+ - Subplaces places are now more centered, to be more appealing. (ln. 207 - 210)
+
+    Valra!! If you're seeing this, be free to implement these fixes if you'd like!!
+*/
 let currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
 let subplacesContentDiv = null;
 let searchBar = null;
@@ -154,7 +167,7 @@ async function createSubplacesTab(subplaces) {
     subplaceTab.className = 'rbx-tab tab-subplaces';
     subplaceTab.innerHTML = `
       <a class="rbx-tab-heading">
-          <span class="text-lead">Subplaces</span>
+          <span class="text-lead">Lugares del juego</span>
       </a>
     `;
     horizontalTabs.appendChild(subplaceTab);
@@ -165,11 +178,15 @@ async function createSubplacesTab(subplaces) {
 
     searchBar = document.createElement('input');
     searchBar.type = 'text';
-    searchBar.placeholder = 'Search subplaces...';
+    searchBar.placeholder = 'Buscar lugares en este juego...'; // Search subplaces...
     searchBar.className = 'subplace-search';
-    searchBar.style.width = '100%';
-    searchBar.style.marginBottom = '10px';
-    searchBar.style.padding = '8px';
+    searchBar.style.width = '70%';
+    searchBar.style.margin = '0 auto';// Center the search bar *
+    searchBar.style.display = 'block';// Make it a block element * 
+    searchBar.style.position = 'relative';
+    searchBar.style.top = '7px'; // Move the god forsaken SEARCH BAR, OH MY GOD FINALLY I GOT IT MOVING 
+    searchBar.style.bottom = '4px';
+    searchBar.style.padding = '10px';
     searchBar.style.boxSizing = 'border-box';
     searchBar.style.borderRadius = '4px';
     searchBar.style.border = '1px solid #bbb';
@@ -186,15 +203,19 @@ async function createSubplacesTab(subplaces) {
     subplacesContainer.classList.add('subplaces-list');
     subplacesContainer.style.display = 'grid';
     subplacesContainer.style.gridTemplateColumns = 'repeat(auto-fill, minmax(150px, 1fr))';
-    subplacesContainer.style.gap = '12px';
-    subplacesContainer.style.marginTop = '5px';
+    subplacesContainer.style.gap = '14px';
+    subplacesContainer.style.marginTop = '30px';
+    subplacesContainer.style.marginLeft = '30px'; // Move a tiny bit to the left
+    subplacesContainer.style.marginRight = '30px'; // Move a tiny bit to the right :p
+    subplacesContainer.style.paddingBottom = '20px'; // Add some padding at the bottom
+
     subplacesContentDiv.appendChild(subplacesContainer);
 
     let displayedSubplaceCount = 0;
     let allDisplayed = false;
 
     loadMoreButton = document.createElement('button');
-    loadMoreButton.textContent = 'Load More';
+    loadMoreButton.textContent = 'Cargar Más'; // Load More
     loadMoreButton.classList.add('load-more-button', 'tab-button');
     loadMoreButton.style.display = 'none';
     loadMoreButton.style.position = 'relative';
@@ -384,7 +405,7 @@ async function createSubplacesTab(subplaces) {
 
     if (subplaces.length === 0) {
         const noGames = document.createElement('p');
-        noGames.textContent = "No subplaces found.";
+        noGames.textContent = "No se han encontrado lugares.";
         noGames.style.gridColumn = '1 / -1';
         subplacesContainer.appendChild(noGames);
         loadMoreButtonWrapper.style.display = 'none';

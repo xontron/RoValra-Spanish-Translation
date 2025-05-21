@@ -1,3 +1,14 @@
+/*
+NOTES:
+        - Translation done? ✅
+
+        cant believe i decorated the 
+        header as if i was a child 💔
+        
+
+
+*/
+
 // u did not see this
 if (window.location.href === 'https://www.roblox.com/cats') {
 
@@ -11,7 +22,13 @@ if (window.location.href === 'https://www.roblox.com/cats') {
             contentDiv.style.position = 'relative';
 
             const header = document.createElement('h1');
-            header.textContent = 'CATS!!!!!';
+            header.textContent = '☆*: .｡. o(≧▽≦)o .｡.:*☆ ¡¡¡¡GATITOS!!!! ☆*: .｡. o(≧▽≦)o .｡.:*☆'; // CATS!!!!!
+            header.style.textAlign = 'center';
+            header.style.color = '#ff69b4'; // Pink color
+            header.style.marginTop = '20px';
+            header.style.marginBottom = '20px';
+            header.style.marginLeft = 'auto';
+            header.style.marginRight = 'auto';
             contentDiv.appendChild(header); 
 
 

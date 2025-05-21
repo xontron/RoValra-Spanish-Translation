@@ -1,3 +1,9 @@
+/*
+NOTES:
+        - Translation done? ✅
+
+
+*/
 chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
     if (result.PreferredRegionEnabled) {
         if (window.location.pathname.includes('/games/')) {
@@ -22,21 +28,21 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
             const MAX_SERVER_PAGES = 20; 
 
             const REGIONS = { 
-                "SG": { latitude: 1.3521, longitude: 103.8198, city: "Singapore", state: null, country: "Singapore" },
-                "DE": { latitude: 50.1109, longitude: 8.6821, city: "Frankfurt", state: null, country: "Germany" },
-                "FR": { latitude: 48.8566, longitude: 2.3522, city: "Paris", state: null, country: "France" },
-                "JP": { latitude: 35.6895, longitude: 139.6917, city: "Tokyo", state: null, country: "Japan" },
-                "NL": { latitude: 52.3676, longitude: 4.9041, city: "Amsterdam", state: null, country: "Netherlands" },
-                "US-CA": { latitude: 34.0522, longitude: -118.2437, city: "Los Angeles", state: "California", country: "United States" },
-                "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "United States" },
-                "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "United States" },
-                "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "United States" },
-                "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "United States" },
-                "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "New York City", state: "New York", country: "United States" },
-                "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "United States" }, 
-                "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sydney", state: null, country: "Australia" },
-                "GB": { latitude: 51.5074, longitude: -0.1278, city: "London", state: null, country: "United Kingdom" },
-                "IN": { latitude: 19.0760, longitude: 72.8777, city: "Mumbai", state: null, country: "India" }
+                "SG": { latitude: 1.3521, longitude: 103.8198, city: "Singapur", state: null, country: "Singapur" },
+                "DE": { latitude: 50.1109, longitude: 8.6821, city: "Fráncfort", state: null, country: "Alemania" },
+                "FR": { latitude: 48.8566, longitude: 2.3522, city: "París", state: null, country: "Francia" },
+                "JP": { latitude: 35.6895, longitude: 139.6917, city: "Tokio", state: null, country: "Japón" },
+                "NL": { latitude: 52.3676, longitude: 4.9041, city: "Ámsterdam", state: null, country: "Países Bajos" },
+                "US-CA": { latitude: 34.0522, longitude: -118.2437, city: "Los Ángeles", state: "California", country: "Estados Unidos" },
+                "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "Estados Unidos" },
+                "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "Estados Unidos" },
+                "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "Estados Unidos" },
+                "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "Estados Unidos" },
+                "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "Nueva York", state: "Nueva York", country: "Estados Unidos" },
+                "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "Estados Unidos" }, 
+                "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sídney", state: null, country: "Australia" },
+                "GB": { latitude: 51.5074, longitude: -0.1278, city: "Londres", state: null, country: "Reino Unido" },
+                "IN": { latitude: 19.0760, longitude: 72.8777, city: "Bombay", state: null, country: "India" }
             };
 
             let newButtonAdded = false;
@@ -244,9 +250,9 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                 let tooltipHTML = '';
                 if (regionCode && REGIONS[regionCode]) {
                     const regionName = getFullLocationName(regionCode);
-                    tooltipHTML = `Join Preferred Region<br>${regionName}`; 
+                    tooltipHTML = `Unirse a su región de preferencia<br>${regionName}`; 
                 } else {
-                    tooltipHTML = 'Select Preferred Region'; 
+                    tooltipHTML = 'Seleccionar Región de Preferencia'; 
                 }
                 tooltipSpan.innerHTML = tooltipHTML;
             }
@@ -257,14 +263,14 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                 const overlay = document.createElement('div'); overlay.id = `${MODAL_ID}-overlay`;
                 const modalContent = document.createElement('div'); modalContent.id = `${MODAL_ID}-content`;
 
-                const heading = document.createElement('h2'); heading.textContent = 'Select Your Preferred Server Region'; modalContent.appendChild(heading);
+                const heading = document.createElement('h2'); heading.textContent = 'Seleccione Su Región de Servidor'; modalContent.appendChild(heading);
                 const explanation = document.createElement('p');
-                explanation.innerHTML = `Please select the server region closest to you for the best connection.<br><br><strong>Note:</strong> This can always be changed later in settings.`; modalContent.appendChild(explanation);
+                explanation.innerHTML = `Favor de seleccionar la región del servidor más cercano hacia usted para una mejor conexión<br><br><strong>NOTA:</strong> Esto puede ser cambiado en las ajustes más tarde.`; modalContent.appendChild(explanation);
 
-                const label = document.createElement('label'); label.setAttribute('for', `${MODAL_ID}-select`); label.textContent = 'Preferred Region:'; modalContent.appendChild(label);
+                const label = document.createElement('label'); label.setAttribute('for', `${MODAL_ID}-select`); label.textContent = 'Región por preferencia:'; modalContent.appendChild(label); // TRANS_EN
                 const select = document.createElement('select'); select.id = `${MODAL_ID}-select`;
 
-                const defaultOption = document.createElement('option'); defaultOption.value = ""; defaultOption.textContent = "-- Please choose a region --"; defaultOption.disabled = true; defaultOption.selected = true; select.appendChild(defaultOption);
+                const defaultOption = document.createElement('option'); defaultOption.value = ""; defaultOption.textContent = "-- Por favor, seleccione su región. --"; defaultOption.disabled = true; defaultOption.selected = true; select.appendChild(defaultOption);
 
                 for (const key in REGIONS) {
                     if (Object.hasOwnProperty.call(REGIONS, key)) {
@@ -277,7 +283,7 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
 
                 const closeModal = () => { const modalOverlay = document.getElementById(`${MODAL_ID}-overlay`); if (modalOverlay) { modalOverlay.remove();} };
 
-                const saveButton = document.createElement('button'); saveButton.textContent = 'Save Preference'; saveButton.classList.add('save-button'); saveButton.type = 'button';
+                const saveButton = document.createElement('button'); saveButton.textContent = 'Guardar ajustes/preferencias'; saveButton.classList.add('save-button'); saveButton.type = 'button';
                 saveButton.addEventListener('click', async () => { 
                     const selectedRegion = select.value;
                     if (selectedRegion && REGIONS[selectedRegion]) {
@@ -295,8 +301,19 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                 });
                 modalContent.appendChild(saveButton);
 
-                const closeButton = document.createElement('button'); closeButton.textContent = 'Close'; closeButton.classList.add('close-button'); closeButton.type = 'button';
+                const closeButton = document.createElement('button'); closeButton.textContent = 'Cerrar'; closeButton.classList.add('close-button'); closeButton.type = 'button';
                 closeButton.addEventListener('click', closeModal); modalContent.appendChild(closeButton);
+
+                const buttonContainer = document.createElement('div');
+                buttonContainer.style.display = 'flex';
+                buttonContainer.style.justifyContent = 'center';
+                buttonContainer.style.gap = '10px'; // Espaciado entre los botones
+                buttonContainer.style.marginTop = '20px'; // Espaciado superior opcional
+                modalContent.appendChild(buttonContainer);
+                
+                buttonContainer.appendChild(closeButton);
+                buttonContainer.appendChild(saveButton);
+                
 
                 overlay.appendChild(modalContent); document.body.appendChild(overlay);
 
@@ -320,7 +337,7 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                     const closeButton = document.createElement('button');
                     closeButton.id = `${LOADING_OVERLAY_ID}-close-button`;
                     closeButton.textContent = '✕'; 
-                    closeButton.setAttribute('aria-label', 'Cancel Server Search');
+                    closeButton.setAttribute('aria-label', 'Cancelar Busqueda');
                     closeButton.addEventListener('click', (event) => {
                         event.stopPropagation(); 
                         userRequestedStop = true; 
@@ -336,7 +353,7 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
 
                     const text = document.createElement('p');
                     text.id = `${LOADING_OVERLAY_ID}-text`;
-                    text.textContent = 'Searching For Servers'; 
+                    text.textContent = 'Buscando Servidores'; 
                     overlay.appendChild(text);
 
                     const dotsContainer = document.createElement('div');
@@ -352,7 +369,7 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                 }
 
                 const textElement = document.getElementById(`${LOADING_OVERLAY_ID}-text`);
-                if (textElement) textElement.textContent = 'Searching For Servers';
+                if (textElement) textElement.textContent = 'Buscando Servidores';
                 const dots = document.getElementById(`${LOADING_OVERLAY_ID}-dots`);
                 if (dots) dots.style.display = 'flex'; 
 
@@ -731,14 +748,16 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
 
                 if (!serverDataLoaded) {
                      if (!userRequestedStop) { 
-                        alert(`Failed to load server information. Roblox servers might be busy or unavailable. Please try again later.`);
+                        // Failed to load server information. Roblox servers might be busy or unavailable. Please try again later
+                        alert(`Hubo un error al cargar la información del servidor. Es posible que los servidores de Roblox estén ocupados o no disponibles. Inténtelo más tarde.`);
                      }
                     return; 
                 }
 
                 if (allServers.length === 0) { 
                      if (!userRequestedStop) { 
-                         alert(`Could not find any servers listed for this game.`);
+                        // Could not find any servers listed for this game.
+                         alert(`No se han encontrado servidores para este juego.`);
                      }
                     return; 
                 }
@@ -755,7 +774,7 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                         keepOverlayOpen = true; 
 
                         if (overlayText) {
-                            overlayText.textContent = `No servers found in ${getFullLocationName(targetRegionCode)}.`;
+                            overlayText.textContent = `No se ha encontrado servidores en la región ${getFullLocationName(targetRegionCode)}.`;
                             if (dotsContainer) {
                                 dotsContainer.style.display = 'none'; 
                             }
@@ -769,7 +788,8 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                             }
                         } else {
                             keepOverlayOpen = false;
-                            alert(`Could not find any available servers in your preferred region (${getFullLocationName(targetRegionCode)}) after searching. Overlay might have closed unexpectedly.`);
+                            // Could not find any available servers in your preferred region (${getFullLocationName(targetRegionCode)}) after searching. Overlay might have closed unexpectedly
+                            alert(`Después de haber intentado de buscar un servidor para su  región de preferencia (${getFullLocationName(targetRegionCode)}), no se ha logrado encontrar un servidor. Es posible que la superposición haya cerrado inesperadamente.`); 
                             hideLoadingOverlay();
                         }
                     }
@@ -817,7 +837,8 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                     joinSpecificServer(placeId, bestServer.id);
                 } else {
                      if (!userRequestedStop) { 
-                         alert(`Found servers in ${getFullLocationName(targetRegionCode)}, but none seem suitable (they might be full or have issues). Please try again later.`);
+                        // Found servers in ${getFullLocationName(targetRegionCode)}, but none seem suitable (they might be full or have issues). Please try again later.
+                         alert(`Se han encontrado servidores en ${getFullLocationName(targetRegionCode)}, pero ninguno parece adecuado (es posible que esté lleno o tenga problemas). Intente de nuevo más tarde.`);
                          hideLoadingOverlay();
                      } else {
                     }
@@ -826,7 +847,8 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
             function joinSpecificServer(placeId, serverId) { 
                 const safePlaceId = String(placeId); const safeServerId = String(serverId);
                 if (!/^\d+$/.test(safePlaceId) || !/^[0-9a-fA-F-]+$/.test(safeServerId)) {
-                    alert("Error: Could not join server due to invalid ID.");
+                    //Error: Could not join server due to invalid ID.
+                    alert("Error: No se ha podido unirse al servidor debido a que el ID es inválido.");
                     return;
                 }
 
@@ -842,12 +864,14 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
 
                 chrome.runtime.sendMessage({ action: "injectScript", codeToInject: codeToInject }, (response) => {
                     if (chrome.runtime.lastError) {
-                        alert("Error communicating with the extension's background process. Please try reloading the extension or browser.");
+                        // Error communicating with the extension's background process. Please try reloading the extension or browser.
+                        alert("Hubo un error al comunicar con la extensión en segundo plano. Favor de intentar refrescando la extensión o su navegador.");
                         return;
                     }
                     if (response && response.success) {
                     } else {
-                        alert(`Error initiating join: ${response?.error || 'Unknown error. Check console for details.'}`);
+                        // Error initiating join: ${response?.error || 'Unknown error. Check console for details.
+                        alert(`Error al intentar unirse: ${response?.error || 'Unknown error. Check console for details.'}`);
                     }
                 });
             }
@@ -887,7 +911,7 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                              const dotsContainer = document.getElementById(`${LOADING_OVERLAY_ID}-dots`);
                              
                              if (overlayText) {
-                                 overlayText.textContent = "No servers found.";
+                                 overlayText.textContent = "No se han encontrado servidores.";
                                  if (dotsContainer) {
                                      dotsContainer.style.display = 'none';
                                  }
@@ -927,7 +951,8 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                 } catch (error) {
                      if (!userRequestedStop) {
                          keepOverlayOpen = false;
-                         alert(`An error occurred while trying to join the server: ${error.message || 'Unknown error'}. Please check the console for details.`);
+                         // An error occurred while trying to join the server: ${error.message || 'Unknown error'}. Please check the console for details.
+                         alert(`Un error ha ocurrido al intentar unirse al servidor: ${error.message || 'Unknown error'}. Please check the console for details.`);
                      }
                 }
                 finally {
@@ -1019,7 +1044,8 @@ chrome.storage.local.get(['PreferredRegionEnabled'], function(result) {
                             showRegionSelectionModal(newButton);
                         }
                     } catch (error) {
-                         alert("Error reading saved preference. Please try opening the selection modal again.");
+                        // Error reading saved preference. Please try opening the selection modal again.
+                         alert("Hubo un error al leer las preferencias ya guardadas. Intente abrir el modulo de selección de nuevo.");
                          showRegionSelectionModal(newButton);
                     }
                 });

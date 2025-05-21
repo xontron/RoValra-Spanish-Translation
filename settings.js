@@ -1,54 +1,60 @@
+/* 
+        NOTES:
+        - Translation done? ✅
+        translating is so funsies heusuiawud8cn mxhn 89y7wq3
+
+*/
 const REGIONS = {
-    "AUTO": { city: "Nothing Selected", state: null, country: null },
-    "SG": { latitude: 1.3521, longitude: 103.8198, city: "Singapore", state: null, country: "Singapore" },
-    "DE": { latitude: 50.1109, longitude: 8.6821, city: "Frankfurt", state: null, country: "Germany" },
-    "FR": { latitude: 48.8566, longitude: 2.3522, city: "Paris", state: null, country: "France" },
-    "JP": { latitude: 35.6895, longitude: 139.6917, city: "Tokyo", state: null, country: "Japan" },
-    "NL": { latitude: 52.3676, longitude: 4.9041, city: "Amsterdam", state: null, country: "Netherlands" },
-    "US-CA": { latitude: 34.0522, longitude: -118.2437, city: "Los Angeles", state: "California", country: "United States" },
-    "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "United States" },
-    "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "United States" },
-    "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "United States" },
-    "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "United States" },
-    "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "New York City", state: "New York", country: "United States" },
-    "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "United States" }, 
-    "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sydney", state: null, country: "Australia" },
-    "GB": { latitude: 51.5074, longitude: -0.1278, city: "London", state: null, country: "United Kingdom" },
-    "IN": { latitude: 19.0760, longitude: 72.8777, city: "Mumbai", state: null, country: "India" }
+    "AUTO": { city: " -- No se ha seleccionado. -- ", state: null, country: null },
+    "SG": { latitude: 1.3521, longitude: 103.8198, city: "Singapur", state: null, country: "Singapur" },
+    "DE": { latitude: 50.1109, longitude: 8.6821, city: "Fráncfort", state: null, country: "Alemania" },
+    "FR": { latitude: 48.8566, longitude: 2.3522, city: "Paris", state: null, country: "Francia" },
+    "JP": { latitude: 35.6895, longitude: 139.6917, city: "Tokyo", state: null, country: "Japón" },
+    "NL": { latitude: 52.3676, longitude: 4.9041, city: "Ámsterdam", state: null, country: "Países Bajos" },
+    "US-CA": { latitude: 34.0522, longitude: -118.2437, city: "Los Ángeles", state: "California", country: "Estados Unidos" },
+    "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "Estados Unidos" },
+    "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "Estados Unidos" },
+    "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "Estados Unidos" },
+    "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "Estados Unidos" },
+    "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "Ciudad de Nueva York", state: "Nueva York", country: "Estados Unidos" },
+    "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "Estados Unidos" }, 
+    "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sídney", state: null, country: "Australia" },
+    "GB": { latitude: 51.5074, longitude: -0.1278, city: "Londres", state: null, country: "Reino Unido" },
+    "IN": { latitude: 19.0760, longitude: 72.8777, city: "Bombai", state: null, country: "India" }
 };
 
 const SETTINGS_CONFIG = {
     Catalog: {
-        title: "Catalog",
+        title: "Catálogo",
         settings: {
             itemSalesEnabled: {
-                label: "Enable Item Sales",
-                description: ["This shows the most up to date sales and revenue data we have.", 
-                            "The sales data is very likely to be inaccurate on items that are for sale, but very likely to be correct on off sale items."],
+                label: "Habilitar Ventas de Objetos", //  Enable Item Sales
+                description: ["Esto muestra las ventas más recientes e ingresos que tenemos.", // This shows the most up to date sales and revenue data we have.
+                            "Los datos de ventas podria resultar inexactos en los artículos que están a la venta, pero muy probable que sean correctos en los artículos que no están a la venta."], // OG: The sales data is very likely to be inaccurate on items that are for sale, but very likely to be correct on off sale items.
                 type: "checkbox",
                 default: true
             },
             hiddenCatalogEnabled: {
-                label: "Enable Hidden Catalog",
-                description: ["Shows Roblox made items before they are on the official catalog."],
+                label: "Habilitar Catálogo Oculto", // : Enable Hidden Catalog
+                description: ["Muestra los artículos creados por Roblox antes de que salgan en el catálogo oficial."], // Shows Roblox made items before they are on the official catalog
                 type: "checkbox",
                 default: true
             }
         }
     },
     Games: {
-        title: "Games",
+        title: "Juegos",
         settings: {
             regionSelectorEnabled: {
-                label: "Enable Region Selector",
-                description: ["This lets you select a server in a specific region to join."],
+                label: "Habilitar Selector de Región", // Enable Region Selector
+                description: ["Esto permite al usuario seleccionar un servidor de una región específica para unirse."], // This lets you select a server in a specific region to join."],
                 type: "checkbox",
                 default: false,
                 childSettings: {
                     regionSimpleUi: {
-                        label: "Enable Globe UI",
-                        description: ["This changes the region selector UI to a globe.",
-                                    "WARNING this may be laggy on lower end devices, and the UI is outdated."],
+                        label: "Habilitar Interfaz de Globo", // Enable Globe UI
+                        description: ["Esto cambia la selección de la región a una interfaz de globo.", // This changes the region selector UI to a globe
+                                    "⚠️ PEQUEÑO AVISO ⚠️ - Esta función podria ralentizar su dispositivo si es de bajo recursos. Además, la interfaz está algo desactualizada."], // WARNING this may be laggy on lower end devices, and the UI is outdated.
                         type: "checkbox",
                         default: false
                     }
@@ -56,16 +62,16 @@ const SETTINGS_CONFIG = {
                 }
             },
             PreferredRegionEnabled: {
-                label: "Enable Preferred Join Region",
-                description: ["This adds a play button that joins your preferred region.",
-                            "Works independently whether Region Selector is enabled or not."],
+                label: "Habilitar Unirse A Las Regiones Preferidas", // Enable Preferred Join Region
+                description: ["Agrega un botón que permite al usuario unirse a los servidores de su región preferida.", // This adds a play button that joins your preferred region.
+                            "Esto funciona independientemente de si el Selector de Región esté habilitado o no."], // Works independently whether Region Selector is enabled or not.
                 type: "checkbox",
                 default: true,
                 childSettings: {
                     robloxPreferredRegion: {
-                        label: "Preferred Join Region",
-                        description: ["Select your preferred region for joining games.",
-                                    "This setting works independently of the Region Selector."],
+                        label: "Unirse Automaticamente a las Regiones Preferidas", // Preferred Join Region with extra notes :p
+                        description: ["Seleccione su región preferida para unirse a los servidores de tal región automaticamente.", // Select your preferred region for joining games.
+                                    "Esto funciona independientemente del Selector de Región."], // This setting works independently of the Region Selector.
                         type: "select",
                         options: "REGIONS",
                         default: "AUTO"
@@ -73,66 +79,73 @@ const SETTINGS_CONFIG = {
                 }
             },
             subplacesEnabled: {
-                label: "Enable Subplaces",
-                description: ["Shows the subplaces of a game."],
+                label: "Habilitar Lugares", // Enable Subplaces
+                description: ["Muestra los lugares de la experiencia."], // Show the subplaces of a game.
                 type: "checkbox",
                 default: true
             },
             inviteEnabled: {
-                label: "Enable Universal Server Invites (disabled for maintenance)",
-                description: ["This allows you to invite your friends to the game you're in, without your friend requiring any extension, not even RoValra!",
-                            "This will replace RoPros invites.",
-                            "This does require you to have BTRoblox for it to work."],
+                label: "Habilitar Invitaciones de Servidores Universales (deshabiltado por mantenimiento) 🧹 💨", // Enable Universal Server Invites (disabled for maintance)
+                // This allows you to invite your friends to the game you're in, without your friend requiring any extension, not even RoValra! 
+                description: ["Esta opción permite invitar a tus amigos a tu partida, sin el requerimiento de alguna extensión, ¡esto también significa a aquellos que no tienen RoValra!", 
+                            "Esto reemplazara las invitaciones con RoPro.", // This will replace RoPros' invites
+                            "❗❗ - Requiere de la extension BTRoblox para hacer que esto funcione."], // This does require you to have BTRoblox for it to work.
                 type: "checkbox",
                 default: false,
                 disabled: true
             },
             universalSniperEnabled: {
-                label: "Enable Universal User Sniper",
-                description: ["This allows you to join a user, without needing to be friends with them.",
-                            "Only requirement is that you know what game they are playing."],
+                label: "Habilitar Sniper Universal para el Usuario", // Enable Universal User Sniper
+                // This allows you to join a user, without needing to be friends with them.",
+                description: ["Esta opcion permite encontrar a cualquier usuario sin la necesidad de ser amigos.",
+                            "🐟 - Para hacer que esto funcione, requerirás saber que está jugando dicho usuario."], // Only requirement is that you know what game they are playing
                 type: "checkbox",
                 default: true
             }
         }
     },
     Profile: {
-        title: "Profile",
+        title: "Perfil", // Profile
         settings: {
             userGamesEnabled: {
-                label: "Enable Hidden User Games",
-                description: ["Shows a users hidden games on their profile."],
+                label: "Habilitar Experiencias Ocultas", // Enable Hidden User Games
+                description: ["Esta opcion permite ver experiencias/juegos ocultos de tal usuario."], // Shows a users hidden games on their profile.
                 type: "checkbox",
                 default: true
             },
             userSniperEnabled: {
-                label: "Enable Instant Joiner",
-                description: ["This joins a user instantly when they go into a game, best used for people with a lot of people trying to join them.",
-                            "It is recommended that you uninstall the microsoft store version of roblox, if you plan to use this feature.",
-                            "This feature requires the user to be friends with you or have their joins on."],
+                label: "Habilitar Unidor Instantáneo", // Enable Instant Joiner
+                // This joins a user instantly when they go into a game, best used for people with a lot of people trying to join them.
+                description: ["Esta opción permite unirse al usuario al instante una vez que se unen al juego. Puede usarse para unirse a usuarios con muchas personas intentando unirse.",
+                            // It is recommended that you uninstall the microsoft store version of roblox, if you plan to use this feature
+                            "〰 Se recomienda desinstalar la versión de Microsoft Store de Roblox para usar esta función (claro si es que desea usarlo :p).",
+                            // This feature requires the user to be friends with you or have their joins on
+                            "❗ - Esta característica requiere que el usuario al que vas a unirte: que le permita unirse o que lo tenga de amigos."],
                 type: "checkbox",
                 default: false
             },
             privateInventoryEnabled: {
-                label: "Enable Private Inventory Viewer",
-                description: ["This allows you to view a users private inventory, by scanning a lot of items at once, to check if they own them."],
+                label: "Habilitar Vista al Inventario Privado", // Enable Private Inventory Viewer - I need to word what I just translated better (T_T)
+                // This allows you to view a users private inventory, by scanning a lot of items at once, to check if they own them.
+                description: ["Esta opción te permite ver el inventario de un usuario, aunque lo tenga privado. Puede escanear una cantidad larga de artículos a la misma vez o verificar si lo dispone."],
                 type: "checkbox",
                 default: true,
             }
         }
     },
     Communities: {
-        title: "Communities",
+        title: "Comunidades", // Communities
         settings: {
             groupGamesEnabled: {
-                label: "Enable Hidden Community Games",
-                description: ["Shows a communities hidden games."],
+                label: "Habilitar Experiencias/Juegos Ocultos de la Comunidad", // Enable Hidden Community Games
+                description: ["Esta opción te permite mostrar las experiencias/juegos ocultos de dicha comunidad."], // Shows a communities hidden games
                 type: "checkbox",
                 default: true
             },
             pendingRobuxEnabled: {
-                label: "Enable Unpending Robux",
-                description: ["Shows an estimate of how many pending Robux will stop pending within 24 hours.",],
+                label: "Mostrar Robux Pendientes", // Enable Unpending Robux
+                // Shows an estimate of how many pending Robux will stop pending within 24 hours. - uhh yeah i need to use better wordings on this translation
+                description: ["Esta opción muestra la estimación de tus Robux que dejará de estar pendiente en las 24 horas",],
                 type: "checkbox",
                 default: true
             }
@@ -142,50 +155,59 @@ const SETTINGS_CONFIG = {
         title: "Avatar",
         settings: {
             forceR6Enabled: {
-                label: "Remove R6 Warning",
-                description: ["Removes the R6 warning when switching to R6"],
+                label: "Eliminar El Aviso de R6", // Remove R6 Warning
+                description: ["Elimina el aviso cuando cambias a la estructura R6 de Roblox."], // Removes the R6 warning when switching to R6
                 type: "checkbox",
                 default: true
             },
             fixR6Enabled: {
-                label: "Enable R6 Fix (BETA)",
-                description: ["Stops Roblox from automatically switching your character to R15 when equiping dynamic heads.",
-                            "This requires you to use the english language on Roblox."],
+                label: "Habilitar Corrección para R6 (BETA)", // Enable R6 Fix (BETA)
+                // Stops Roblox from automatically switching your character to R15 when equiping dynamic heads.
+                description: ["Esta opción evita a que Roblox cambie la estructura R6 a R15 cuando equipas una cabeza dinámica.",
+                            // This requires you to use the english language on Roblox.
+                            "🐟 - El usuario deberá cambiar su lenguaje en Roblox a inglés para que esto funcione."],
                 type: "checkbox",
                 default: false
             }
         }
     },
     Miscellaneous: {
-        title: "Miscellaneous",
+        title: "Misceláneos", // Miscellaneous
         settings: {
             ServerdataEnabled: {
-                label: "Send Server ids to RoValras api",
-                description: ["This feature is here since im trying to figure out how well my server handles stuff like this.",
-                    "No personal data is sent, not even user id or username, only the server ids and the place id that ur client found",
-                    "This might be come a permanent feature if this test is successful.",
-                    "Leaving this setting on will help me develop the extension."
+                label: "Enviar IDs de los Servidores a la API de RoValra.", // Send Server ids to RoValras api
+                // This feature is here since im trying to figure out how well my server handles stuff like this.
+                description: ["Esta característica está aquí porque estoy probando cuán bien mi servidor puede aguantar cosas como estas.",
+                    // No personal data is sent, not even user id or username, only the server ids and the place id that ur client found
+                    "Esto no envía datos personales, ni ID de usuario o nombre, solo recibe los IDs de los servidores y experiencias que su cliente de Roblox ha encontrado.",
+                    // This might be come a permanent feature if this test is successful. - tiny enhancements for spanish wording (bleh :p)
+                    "Si esta prueba funciona, es posible que esta característica se vuelva una permanente.",
+                    // Leaving this setting on will help me develop the extension.
+                    "Dejando esta opción habilitada, ayudas a la creación de esta extensión."
                 ],
                 type: "checkbox",
                 default: true
             },
             revertLogo: {
-                label: "Change the app launching icon",
-                description: ["This changes the icon that shows when you join a game.",
-                    "Old icon is the icon it had before they changed it to the new app client icon.",
-                    "And ofc custom icon is any image you want."
+                label: "Cambiar el icono al lanzar la aplicación", // Change the app launching icon - wowie
+                // This changes the icon that shows when you join a game.
+                description: ["Esto cambia el icono que se muestra al unirte en una experiencia/juego",
+                    // Old icon is the icon it had before they changed it to the new app client icon. - enhancements for spansih wording
+                    "El icono antiguo es el logo oscuro antes de que cambiasen al nuevo icono del color azul.",
+                    // And ofc custom icon is any image you want
+                    "Y, bueno, también puedes poner la imagen que usted quisiese. :v"
                 ],
                 type: "select",
                 options: [
-                    { value: 'NEW', label: 'Off' },
-                    { value: 'OLD', label: 'Old icon' },
-                    { value: 'CUSTOM', label: 'Custom icon' }
+                    { value: 'NEW', label: 'Deshabilitado' }, // Off
+                    { value: 'OLD', label: 'Icono antiguo' }, // Old icon
+                    { value: 'CUSTOM', label: 'Icono personalizado' } // Custom icon
                 ],
                 default: 'NEW'
             },
             customLogoData: {
-                label: "Custom icon",
-                description: ["Upload your custom image."],
+                label: "Icono personalizado", // Custom icon
+                description: ["Cargar icono personalizado."], // Upload your custom image.
                 type: "file",
                 default: null
             }
@@ -585,7 +607,7 @@ function addCustomButton() {
         return;
     }
 
-    const existingButton = menuList.querySelector('li.menu-option > a > span.font-caption-header[textContent="RoValra Settings"]');
+    const existingButton = menuList.querySelector('li.menu-option > a > span.font-caption-header[textContent="Configuración de RoValra"]'); // RoValra's Settings
     if (existingButton) {
         return;
     }
@@ -602,7 +624,7 @@ function addCustomButton() {
 
     const newButtonSpan = document.createElement('span');
     newButtonSpan.classList.add('font-caption-header');
-    newButtonSpan.textContent = 'RoValra Settings';
+    newButtonSpan.textContent = 'Configuración de RoValra'; // RoValra's Settings
     newButtonSpan.style.fontSize = '12px'
 
     const logo = document.createElement('img');
@@ -661,7 +683,7 @@ function addPopoverButton() {
         return;
     }
 
-    const existingButton = popoverMenu.querySelector('li.list-item > a > span.font-caption-header[textContent="RoValra Settings"]');
+    const existingButton = popoverMenu.querySelector('li.list-item > a > span.font-caption-header[textContent="Configuración de RoValra"]'); // RoValra's Settings
     if (existingButton) {
         isPopoverButtonAdding = false;
         return;
@@ -686,7 +708,7 @@ function addPopoverButton() {
 
     const newButtonSpan = document.createElement('span');
     newButtonSpan.classList.add('font-caption-header');
-    newButtonSpan.textContent = 'RoValra Settings';
+    newButtonSpan.textContent = 'Configuración de RoValra'; // RoValra's Settings
     newButtonSpan.style.fontSize = '16px';
     newButtonSpan.style.marginLeft = '-1px';
 
@@ -1035,7 +1057,7 @@ async function checkRoValraPage() {
     userAccountDiv.id = 'user-account';
 
     let rovalraHeader = document.createElement('h1');
-    rovalraHeader.textContent = 'RoValra Settings';
+    rovalraHeader.textContent = 'Configuración de RoValra';
 
     let settingsContainer = document.createElement('div');
     settingsContainer.id = 'settings-container';
@@ -1046,7 +1068,7 @@ async function checkRoValraPage() {
     contentDiv.appendChild(userAccountDiv)
     containerMain.appendChild(contentDiv);
     await applyTheme(); 
-    if (rovalraHeader && rovalraHeader.textContent === 'RoValra Settings' && settingsContainer) {
+    if (rovalraHeader && rovalraHeader.textContent === 'Configuración de RoValra' && settingsContainer) {
         contentDiv.style.cssText = `
             width: 100% !important;
             height: auto !important;
@@ -1242,83 +1264,148 @@ async function checkRoValraPage() {
         `;
         document.head.appendChild(style);
         const buttonData = [
+            // TODO-NOTES: Woah, basically the information it gets brought up if you click RoValra's settings, so kewl
+            // Start - Info section
             {
-                text: "Info", content: `
+                text: "Información", content: `
                    <div style="padding: 15px; border-radius: 8px;">
-                   <h2 style="; margin-bottom: 10px;">RoValra Infomation!</h2>
-                   <p style="">RoValra is an extension that's trying to make basic quality of life features free and accessible to everyone, by making everything completely open-source.</p>
-                   <div style="margin-top: 5px;">
-                       <p style="">This is possible by running almost everything locally.</p>
-                       <div style="margin-top: 5px;">
-                       <p style="">If you have any feature suggestions please let me know in my Discord server or via GitHub</p>
-                       <div style="margin-top: 5px;">
-                       <p style="">Feel free to report any bugs big or small to me on GitHub.</p>
-                       </div>
-                   <div style="margin-top: 10px;">
-                           <a href="https://discord.gg/GHd5cSKJRk" target="_blank">Discord Server</a>
-                           <a href="https://github.com/NotValra/RoValra" target="_blank">
-                           Github Repo
-                           <img src="${chrome.runtime.getURL("Assets/icon-128.png")}" style="width: 20px; height: 20px; margin-left: 5px; vertical-align: middle;" />
-                           </a>
-                           <a href="https://www.roblox.com/games/9676908657/Gamepasses#!/store"style="margin-left: 5px; target="_blank">Support me on Roblox</a>
+                   
+                   <!-- Title: RoValra Information! -->
+                        <center><h2 style="; margin-bottom: 10px; font-size: 32px;">¡Información de RoValra!</h2></center>
+                        <hr style="width: 650px;" >
+                   <!-- End of RoValra's Information Title -->
 
+                   <!--  DESCRIPTION: RoValra is an extension that's trying to make basic quality of life features free and accessible to everyone, by making everything completely open-source. -->
+                        <h3 style="font-size: 20px; margin-top: 20px; margin-left: 30px;"> ¿Qué es RoValra? <h3>
+                        <p style="; margin-top: 20px; margin-bottom: 20px; margin-left: 30px; margin-right: 30px;">RoValra es una extensión que intenta traer y mejorar la calidad de vida de ciertas características gratuitamente. Además, es accesible para todos, convirtiendo todo a código abierto.</p>
+                        <hr style="width: 650px; margin-top: 30px; margin-bottom: 20px;" >
+                   <!-- End of RoValra's Description -->
+
+                   <!-- This seems like some tiny notes, guess I'll name it as is then! -->
+                   <!-- NOTES: RoValra's Notes -->
+                        <div style="margin-top: 5px;">
+                            <center><h3 style="font-size: 20px; margin-top: 20px; margin-left: 30px;"> Notas:</h3></center>
+                            <p style="; margin-top: 20px;  margin-left: 30px; margin-right: 30px;">Todo esto es posible corriéndolo localmente.</p> <!-- This is possible by running almost everything locally.-->
+
+                            <!-- If you have any feature suggestions please let me know in my Discord server or via GitHub -->
+                            <div style="margin-top: 5px;">
+                                <p style="; margin-top: 20px; margin-bottom: 20px; margin-left: 30px; margin-right: 30px;">Si tienes alguna sugerencia para alguna característica, por favor, ¡haznos saber en nuestro servidor de Discord o vía GitHub!</p>
+                                <!-- Feel free to report any bugs big or small to me on GitHub. -->
+                                <div style="margin-top: 5px;">
+                                <center><p style="">¡No dudes en reportar fallos en nuestra página de GitHub!</p>
+                                <p style="; color: #abb2b9; font-size: 10px; margin-bottom: 10px;"> (NOTITA CHULA: ey, si vas a hacer esto, procura hablar en inglés, ya que el creador no habla español :P) </p></center>
+                            </div>
+                            <hr style="width: 300px; margin-top: 20px; margin-bottom: 20px;">
+                    <!-- End of RoValra's Notes -->
+
+                   <div style="margin-top: 10px; font-size: 15px;">
+                        <center>
+                           <a href="https://discord.gg/GHd5cSKJRk" target="_blank" style="; margin-right: 20px;" title="oye, no me vengas a mi que no te avise sobre que hablan en ingles, no seas idiota">🗨 Servidor de RoValra (Inglés)</a> <!-- Discord Server -->
+                           <a href="https://github.com/NotValra/RoValra" target="_blank" title="quiero pasta :(">
+                           Repositorio Github - RoValra (Inglés/Original)
+                           <img src="${chrome.runtime.getURL("Assets/icon-128.png")}" style="width: 20px; height: 20px; margin-left: 5px; vertical-align: middle;" />
+                           </a> <br> <!-- GitHub Repo -->
+                           <a href="https://www.roblox.com/games/9676908657/Gamepasses#!/store" style="margin-left: 5px; target="_blank" title="¿Deseas apoyar al creador de RoValra? Aquí se ofrecen algunas opciones para que esto sea posible.">🦭 ¡Apoya a Valra en Roblox!</a><!-- Support me on Roblox -->
+                        </center>
                    </div>
                </div>
                `},
+               // End - Info section
+
+            // Start - Credits section
             {
-                text: "Credits", content: `
+                text: "Créditos", content: `
                     <div style="padding: 15px; border-radius: 8px;">
-                        <h2 style="margin-bottom: 10px;">RoValra Credits!</h2>
-                        <ul style="margin-top: 10px; padding-left: 0px;">
-                            <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                Thanks to <b style="font-weight: bold;">Frames</b> for somehow getting the Roblox sales and revenue on some items
-                                <a href="https://github.com/workframes/roblox-owner-counts" target="_blank">GitHub Repo</a>
-                            </li>
-                            <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                Thanks to <b style="font-weight: bold;">Julia</b> for making a repo with all Roblox server ips
-                                <a href="https://github.com/RoSeal-Extension/Top-Secret-Thing" target="_blank">GitHub Repo</a>
-                            </li>
-                            <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                 Thanks to <b style="font-weight: bold;">Aspect</b> for helping me out here and there when I had a bunch of dumb questions or problems.
-                                 <a href="https://github.com/Aspectise" target="_blank">GitHub</a>
-                           </li>
-                           <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                Thanks to <b style="font-weight: bold;">l5se</b> for allowing me to use their open source region selector as a template for my extension.
-                           </li>
+                        <!-- Credits Title: RoValra's Credits! -->
+                            <h2 style="margin-bottom: 10px;">RoValra le complace a dar créditos a:</h2>
+                        <!-- End of RoValra's Credits. -->
 
-                            <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                Thanks to <b style="font-weight: bold;">7_lz</b> for helping me a bunch when preparing for the Chrome Web Store release. They helped a ton and I'm very thankful.
-                            </li>
-                            <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                Thanks to <b style="font-weight: bold;">mmfw</b> for making the screenshots on the chrome web store.
-                                   </li>
-                             <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                Thanks to <b style="font-weight: bold;">Coweggs</b> for coming up with the very funny name that is "RoValra" as a joke that I then ended up using.
-                                   </li>
-                        </ul>
-                         <div style="margin-top: 20px; border-top: 1px solid #444; padding-top: 10px;">
-                            <h2 style="margin-bottom: 5px;">Extensions</h2>
-                            <p style="margin-bottom: 10px; font-size: 16px;">Valra's personal favorite extensions</p>
+                        <!-- Start List for Crediting People -->
                             <ul style="margin-top: 10px; padding-left: 0px;">
-                                 <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                    <a href="https://RoSeal.live" target="_blank">RoSeal🦭</a>
-                                     <p style="margin-top: 5px;">Adds so many features that after using it you wont be able to use Roblox without it.</p>
-                                </li>
-                                <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                   <a href="https://roqol.io/" target="_blank">RoQoL</a>
-                                    <p style="margin-top: 5px;">Adds quite a few nice quality of life changes.</p>
-                               </li>
-                               <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
-                                   <a href="https://betterroblox.com/" target="_blank">BetterBlox</a>
-                                    <p style="margin-top: 5px;">This extension brings back last online and more features that no other extension has.</p>
-                               </li>
 
+                                <!-- Thanks to <b style="font-weight: bold;">Frames</b> for somehow getting the Roblox sales and revenue on some items -->
+                                <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                    Agradecemos a <b style="font-weight: bold;">Frames</b> por mostrar de alguna manera funcionar las ventas e ingresos de ventas.
+                                    <a href="https://github.com/workframes/roblox-owner-counts" target="_blank">GitHub Repo</a>
+                                </li>
+
+                                <!-- Thanks to <b style="font-weight: bold;">Julia</b> for making a repo with all Roblox server ips -->
+                                <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                    Agradecemos a <b style="font-weight: bold;">Julia</b> por crear un repositorio con todos los servidores IPs de Roblox.
+                                    <a href="https://github.com/RoSeal-Extension/Top-Secret-Thing" target="_blank">GitHub Repo</a>
+                                </li>
+
+                                <!--Thanks to <b style="font-weight: bold;">Aspect</b> for helping me out here and there when I had a bunch of dumb questions or problems. -->
+                                <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                    Agradecemos a <b style="font-weight: bold;">Aspect</b> por ayudarme a entender, responder y a arreglar ciertas cositas respecto al codigo.
+                                    <a href="https://github.com/Aspectise" target="_blank">GitHub</a>
+                                </li>
+
+                                <!-- Thanks to <b style="font-weight: bold;">l5se</b> for allowing me to use their open source region selector as a template for my extension. -->
+                                <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                        Agradecemos a <b style="font-weight: bold;">l5se</b> por darme permiso para usar  su código abierto de Selector Regiones como plantilla para la extensión.
+                                </li>
+
+                                <!--Thanks to <b style="font-weight: bold;">7_lz</b> for helping me a bunch when preparing for the Chrome Web Store release. They helped a ton and I'm very thankful. -->
+                                <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                    Agradecemos a <b style="font-weight: bold;">7_lz</b> por ayudarme a lanzar la extensión a Chrome Web Store. Ellos me ayudaron demasiado y estoy muy agradecido por ello.
+                                </li>
+                                
+                                <!-- Thanks to <b style="font-weight: bold;">mmfw</b> for making the screenshots on the chrome web store. -->
+                                <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                    Agradecemos a <b style="font-weight: bold;">mmfw</b> por hacer capturas de pantalla para Chrome Web Store.
+                                </li>
+
+                                <!-- Thanks to <b style="font-weight: bold;">Coweggs</b> for coming up with the very funny name that is "RoValra" as a joke that I then ended up using.
+                                <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                    Agradecemos a <b style="font-weight: bold;">Coweggs</b> por traer el nombresito ese, "RoValra", en broma (al final lo termine usando :p).
+                                </li>
                             </ul>
-                         </div>
+                        <!-- End of List for Crediting People -->
+
+                        <! -- Start List for Crediting Extensions -->
+                            <div style="margin-top: 20px; border-top: 1px solid #444; padding-top: 10px;">
+
+                                <!-- Credits Title - Extensions -->
+                                <h2 style="margin-bottom: 5px;">Extensiones</h2>
+                                <!-- End Credits Title - Extensions -->
+
+                                <!-- Valra's personal favorite extensions -->
+                                <p style="margin-bottom: 10px; font-size: 16px;">Mis extensiones favoritas (Valra):</p>
+
+                                <!-- Start List - Extensions -->
+                                    <ul style="margin-top: 10px; padding-left: 0px;">
+
+                                        <!-- Adds so many features that after using it you wont be able to use Roblox without it. -->
+                                        <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                            <a href="https://RoSeal.live" target="_blank">RoSeal 🦭</a>
+                                            <p style="margin-top: 5px;">Agrega muchas funciones a Roblox. Si una vez lo instalas, nunca querrás desinstalarlo.</p>
+                                        </li>
+
+                                        <!-- Adds quite a few nice quality of life changes. -->
+                                        <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                        <a href="https://roqol.io/" target="_blank">RoQoL</a>
+                                            <p style="margin-top: 5px;">Agrega algunas calidades vida a la pagina.</p>
+                                        </li>
+
+                                        <!-- This extension brings back last online and more features that no other extension has. SIDENOTE: omg i never knew about this -->
+                                        <li style="margin-bottom: 8px; list-style-type: disc; margin-left: 20px;">
+                                            <a href="https://betterroblox.com/" target="_blank">BetterBlox</a>
+                                                <p style="margin-top: 5px;">Esta extensión trae de vuelta la función de ver cuando estuvo en línea y algunas que otras funciones que otras extensiones no tienen.</p>
+                                        </li>
+
+                                    </ul>
+                                <!-- End List - Extensions -->
+                            
+                            </div>
+                        <!-- End list of Crediting Extensions -->
                     </div>
                 `},
+                // End - Credits section
+
+            //  Start - Settings section
             {
-                text: "Settings", content: `
+                text: "Configuraciones", content: `
                 <div id="settings-content" style="padding: 15px; background-color:rgba(255, 255, 255, 0); border-radius: 8px;">
                     <div id="setting-section-buttons" style="display: flex; margin-bottom: 20px;">
                         </div>
@@ -1327,6 +1414,7 @@ async function checkRoValraPage() {
                 </div>
                 `
             },
+            // End - Settings section
         ];
 
         uiContainer.innerHTML = '';
@@ -1383,7 +1471,7 @@ async function checkRoValraPage() {
                     history.pushState(null, '', newHash);
                 }
 
-                if (item.text === "Settings") {
+                if (item.text === "Configuraciones") {
                     contentContainer.innerHTML = item.content;
                     const settingsContent = contentContainer.querySelector('#setting-section-content');
                     const sectionButtonsContainer = contentContainer.querySelector('#setting-section-buttons');

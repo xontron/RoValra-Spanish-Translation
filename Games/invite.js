@@ -1,3 +1,12 @@
+/*
+NOTES:
+        - Translation done? ✅
+         uhh if im correct this is the 
+         invite feature that is currently disabled
+         
+         huhu, well i translated it already :-)
+
+*/
 const copyToClipboard = (text) => {
     if (navigator.clipboard) {
         navigator.clipboard.writeText(text)
@@ -73,7 +82,7 @@ function addOrUpdateInviteButton(serverItem, placeId) {
 
     const inviteLink = createInviteLink(placeId, jobId);
     inviteButton = document.createElement('a');
-    inviteButton.textContent = 'Invite';
+    inviteButton.textContent = 'Invitar'; // Invite
     inviteButton.classList.add('btn-control-xs', 'custom-invite-button');
     inviteButton.style.cssText = 'width: 30%; margin-left: 2%; position: relative; margin-top: 12px;';
     inviteButton.setAttribute('data-placeid', placeId);
@@ -81,7 +90,7 @@ function addOrUpdateInviteButton(serverItem, placeId) {
     inviteButton.addEventListener('click', (event) => {
         event.preventDefault();
         const originalText = inviteButton.textContent;
-        inviteButton.textContent = "Copied!";
+        inviteButton.textContent = "¡Copiado!"; // Copied!
         copyToClipboard(inviteLink);
         setTimeout(() => {
             inviteButton.textContent = originalText;

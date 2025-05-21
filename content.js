@@ -1,3 +1,10 @@
+/*     
+
+         NOTES:
+        - Translation done? 
+        I rather not touch this :p
+
+*/
 let trackedServerRequests = [];
 let loadedScripts = [];
 let roValraLoaded = false;

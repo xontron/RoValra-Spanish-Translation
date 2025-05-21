@@ -1,3 +1,16 @@
+/*
+NOTES:
+        - Translation done? ✅
+
+        hi
+
+*/
+
+/*
+    uhhh what is this for 
+
+    made translations, nothing else
+*/
 let currentTheme = 'light';
 window.addEventListener('themeDetected', (event) => {
     currentTheme = event.detail.theme;
@@ -88,14 +101,14 @@ fetch(itemsURL)
                     async (foundElement) => {
                         const salesDiv = document.createElement('div');
                         salesDiv.classList.add('item-sales');
-                        salesDiv.innerHTML = `<strong>Sales:</strong> ${item.sales.toLocaleString()}`;
+                        salesDiv.innerHTML = `<strong>Ventas:</strong> ${item.sales.toLocaleString()}`;
                        salesDiv.style.marginTop = "10px";
                         salesDiv.style.marginLeft = "0px";
                         foundElement.appendChild(salesDiv);
 
                         const revenueDiv = document.createElement('div');
                         revenueDiv.classList.add('item-revenue');
-                        revenueDiv.innerHTML = `<strong>Revenue:</strong> $${(item.revenue / 100).toFixed(2)}`;
+                        revenueDiv.innerHTML = `<strong>Ingreso de ventas:</strong> $${(item.revenue / 100).toFixed(2)}`;
                         revenueDiv.style.marginTop = "10px";
                         revenueDiv.style.marginLeft = "0";
                         foundElement.appendChild(revenueDiv);
@@ -104,7 +117,8 @@ fetch(itemsURL)
                         if (itemDetails && itemDetails.isOffSale !== true) {
                             const inaccurateDiv = document.createElement('div');
                             inaccurateDiv.classList.add('item-inaccurate');
-                            inaccurateDiv.textContent = "Sales and Revenue are likely inaccurate";
+                            // Sales and Revenue are likely inaccurate
+                            inaccurateDiv.textContent = "Ventas e ingreso de ventas pueden resultar inexactos.";
                             inaccurateDiv.style.marginTop = "10px";
                             inaccurateDiv.style.marginLeft = "0";
                             inaccurateDiv.style.fontStyle = "italic";

@@ -1,3 +1,9 @@
+/*
+        NOTES:
+        - Translation done? ✅
+        can i has pasta ples
+
+*/
 let currentTheme = 'light';
 
 window.addEventListener('themeDetected', (event) => {
@@ -280,7 +286,7 @@ if (window.location.pathname.includes('/communities')) {
             displayedGameCount = 0;
             loadedGameIds.clear();
             const loadMoreButton = document.createElement('button');
-            loadMoreButton.textContent = 'Load More';
+            loadMoreButton.textContent = 'Cargar Más'; // Load More
             loadMoreButton.classList.add('load-more-button', 'tab-button');
             loadMoreButton.style.display = 'none';
             loadMoreButton.style.position = 'relative';
@@ -464,7 +470,7 @@ if (window.location.pathname.includes('/communities')) {
 
             if (hiddenGames.length === 0) {
                 const noGames = document.createElement('p');
-                noGames.textContent = "No hidden games found.";
+                noGames.textContent = "No se han encontrado juegos escondidos."; // No hidden games found.
                 noGames.style.gridColumn = '1 / -1';
                 hiddenGamesGrid.appendChild(noGames);
                 loadMoreButton.style.display = 'none';
@@ -519,12 +525,12 @@ if (window.location.pathname.includes('/communities')) {
 
 
             const experiencesButton = document.createElement('button');
-            experiencesButton.textContent = "Experiences";
+            experiencesButton.textContent = "Experiencias (juegos)"; // Experiences
             experiencesButton.classList.add('tab-button', 'active-tab');
 
 
             const hiddenGamesButton = document.createElement('button');
-            hiddenGamesButton.textContent = "Hidden Experiences";
+            hiddenGamesButton.textContent = "Experiencias escondidas"; // Hidden Experiences
             hiddenGamesButton.classList.add('tab-button');
 
             hiddenGamesButton.addEventListener('click', async () => {
@@ -717,7 +723,7 @@ if (window.location.pathname.includes('/communities')) {
             loadMoreButton.style.display = 'none';
             if (hiddenGames.length === 0) {
                 const noGames = document.createElement('p');
-                noGames.textContent = "No hidden games found.";
+                noGames.textContent = "No se han encontrado juegos escondidos."; // No hidden games found
                 noGames.style.gridColumn = '1 / -1';
                 hiddenGamesGrid.appendChild(noGames);
             } else {

@@ -1,6 +1,5 @@
-uhhh soon uhmm yeah err, just wait
 # RoValra
-- **Only Official Website  https://rovalra.com**
+- **Only Official Website https://rovalra.com**
 
 <a href="https://chromewebstore.google.com/detail/RoValra%20-%20Roblox%20Improved/njcickgebhnpgmoodjdgohkclfplejli" title="Available in the Chrome Web Store"><img src="/Assets/ChromeWebStore_BadgeWBorder_v2_206x58.png" alt="Available in the Chrome Web Store"></a>\
 <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/NotValra/RoValra/total">
@@ -69,15 +68,10 @@ uhhh soon uhmm yeah err, just wait
     - **Yes and no. I only really update / add stuff if I want to or something breaks. Cuz I don't make anything out of this, so I still wanna keep it fun for me.**
 - **I have feedback where can I tell you it?**
     - **You can send the feedback in my [Discord Server](https://discord.gg/GHd5cSKJRk) in the suggestions channel.**
-- **If I suggest a feature and it gets added will I be credited?**
-    - **No sadly not, most of the features in the extension are suggestions made by people, and the credits page would be way too long. Tho i might do it at some point**
-- **Is this extension ever going paid?**
-    - **No, I dont wanna make this extension paid since I dont pay anything to run it. This also means no features will be locked behind a paywall.**
 
 # To do list
 - [x] **~~Hidden Catalog allowing you to browse up coming unreleased Roblox items.~~ ADDED**
 - [x] **~~Reworked Region selector ui~~ ADDED**
-- [ ] **Big region selector improvements and server uptime**
 - [ ] **Maybe FireFox support (its not my main focus atm)**
 
 # Known incompatibilies
@@ -89,6 +83,7 @@ uhhh soon uhmm yeah err, just wait
 
 # Known Issues
 - **In rare cases it shows unowned items under the owned tab when viewing private inventories**
+- **On the region selector some regions doesnt show unless a server was found in that region**
 # How to install
 
 <details>
@@ -108,7 +103,7 @@ uhhh soon uhmm yeah err, just wait
   
 - **Thanks to mmfw for making the pictures on the chrome web store**
 
-- **Coding: Chatgpt (more like gemini but what ever) 😘 and little me**
+- **Coding: Chatgpt 😘 and little me**
 
 - **Region searcher, orginally a python script made by l5se on dc that I improved in python and then recoded to add to my extension (with premission)**
 
@@ -118,5 +113,3 @@ uhhh soon uhmm yeah err, just wait
 - **7_lz on dc helped me a lot with the process of switching away from third party APIs by providing me with the json and just general help**
 - **Thanks to Julia for creating a Github repo that documented all the Roblox datacenter ips, which helped me find some that were missing https://github.com/RoSeal-Extension/Top-Secret-Thing**
 - **Credit to coweggs on dc for coming up with the name RoValra, it was just too funny I had to use it**
-
-my eyes are tired time so slep 🦈 bya

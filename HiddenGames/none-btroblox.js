@@ -1,3 +1,10 @@
+/*
+NOTES:
+        - Translation done? ✅
+        
+
+
+*/
 console.log('Switched to non-btroblox functionality');
 // I AINT making new comments for the same script but for people who HATE QoL 🦢🦢🦢🦢🦢🦢🦢🦢
 const userId = window.location.pathname.split('/')[2];
@@ -28,7 +35,7 @@ if (userId) {
 
             if (hiddenGames.length === 0) {
                 const noGames = document.createElement('p');
-                noGames.textContent = "No hidden games found.";
+                noGames.textContent = "No se han encontrado experiencias/juegos ocultos."; // No hidden games found
                 hiddenGamesContainer.appendChild(noGames);
             } else {
                 hiddenGames.forEach(game => {
@@ -57,11 +64,11 @@ if (userId) {
                 });
             }
             const gamesButton = document.createElement('button');
-            gamesButton.textContent = "Games";
+            gamesButton.textContent = "Experiencias / Juegos"; // Games (uhhh, i added too much but whatevs)
             gamesButton.classList.add('tab-button', 'active-tab');
 
             const hiddenGamesButton = document.createElement('button');
-            hiddenGamesButton.textContent = "Hidden Games";
+            hiddenGamesButton.textContent = "Experiencias ocultas"; // Hidden Games
             hiddenGamesButton.classList.add('tab-button');
 
             hiddenGamesButton.addEventListener('click', () => {

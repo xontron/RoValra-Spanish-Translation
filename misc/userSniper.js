@@ -1,3 +1,10 @@
+/*
+NOTES:
+        - Translation done? 
+        Not initiated (´。＿。｀)
+
+
+*/
 if (window.location.pathname.includes('/users/')) {
     (function() {
 

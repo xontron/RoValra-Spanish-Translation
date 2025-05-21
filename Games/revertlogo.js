@@ -1,3 +1,12 @@
+/*
+NOTES:
+        - Translation done? 
+        I rather not touch this :p
+        
+        also holy nachos with cheese never knew abiut this
+
+
+*/
 // This is meant to run on all pages incase someone is viewing the code and is worried or something idrk
 (function() {
     const newClassName = "icon-logo-r-95";

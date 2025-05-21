@@ -1,3 +1,10 @@
+/*
+NOTES:
+        - Translation done? 
+        Not initiated yet (´。＿。｀)
+
+
+*/
 const urlParams = new URLSearchParams(window.location.search);
 const GROUP_ID = urlParams.get('id');
 

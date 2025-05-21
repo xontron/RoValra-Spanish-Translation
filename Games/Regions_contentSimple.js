@@ -1,3 +1,10 @@
+/*
+NOTES:
+        - Translation done? ✅
+        hell yeah
+
+
+*/
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -23,22 +30,22 @@ chrome.storage.local.get({ regionSelectorEnabled: false, showServerListOverlay: 
             ];
 
             const regionCoordinates = {
-                "SG": { latitude: 1.3521, longitude: 103.8198, city: "Singapore", state: null, country: "Singapore" },
-                "DE": { latitude: 50.1109, longitude: 8.6821, city: "Frankfurt", state: null, country: "Germany" }, 
-                "FR": { latitude: 48.8566, longitude: 2.3522, city: "Paris", state: null, country: "France" }, 
-                "JP": { latitude: 35.6895, longitude: 139.6917, city: "Tokyo", state: null, country: "Japan" },
-                "BR": { latitude: -14.2350, longitude: -51.9253, city: "Coming early 2026", state: null, country: "Brazil" }, 
-                "NL": { latitude: 52.3676, longitude: 4.9041, city: "Amsterdam", state: null, country: "Netherlands" },
-                "US-CA": { latitude: 34.0522, longitude: -118.2437, city: "LA", state: "California", country: "United States" }, 
-                "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "United States" },
-                "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "United States" }, 
-                "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "United States" }, 
-                "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "United States" }, 
-                "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "NYC", state: "New York", country: "United States" }, 
-                "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "United States" }, 
-                "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sydney", state: null, country: "Australia" }, 
-                "GB": { latitude: 51.5074, longitude: -0.1278, city: "London", state: null, country: "United Kingdom" }, 
-                "IN": { latitude: 19.0760, longitude: 72.8777, city: "Mumbai", state: null, country: "India" }  
+                "SG": { latitude: 1.3521, longitude: 103.8198, city: "Singapur", state: null, country: "Singapur" }, 
+                "DE": { latitude: 50.1109, longitude: 8.6821, city: "Fráncfort", state: null, country: "Alemania" }, 
+                "FR": { latitude: 48.8566, longitude: 2.3522, city: "París", state: null, country: "Francia" }, 
+                "JP": { latitude: 35.6895, longitude: 139.6917, city: "Tokio", state: null, country: "Japón" }, 
+                "BR": { latitude: -14.2350, longitude: -51.9253, city: "Brasil", state: null, country: "Brasil" }, 
+                "NL": { latitude: 52.3676, longitude: 4.9041, city: "Ámsterdam", state: null, country: "Países Bajos" }, 
+                "US-CA": { latitude: 34.0522, longitude: -118.2437, city: "Los Ángeles", state: "California", country: "Estados Unidos" }, 
+                "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "Estados Unidos" }, 
+                "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "Estados Unidos" }, 
+                "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "Estados Unidos" }, 
+                "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "Estados Unidos" }, 
+                "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "Nueva York", state: "Nueva York", country: "Estados Unidos" }, 
+                "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "Estados Unidos" }, 
+                "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sídney", state: null, country: "Australia" }, 
+                "GB": { latitude: 51.5074, longitude: -0.1278, city: "Londres", state: null, country: "Reino Unido" }, 
+                "IN": { latitude: 19.0760, longitude: 72.8777, city: "Bombay", state: null, country: "India" }  
             };
 
 
@@ -160,7 +167,7 @@ chrome.storage.local.get({ regionSelectorEnabled: false, showServerListOverlay: 
                          }
                     }
                 }
-                const refreshButton = document.querySelector('#regionDropdown button[title="Refresh Server List"]');
+                const refreshButton = document.querySelector('#regionDropdown button[title="Refrescar Lista de Servidores"]'); // Refresh Server List
                 if (refreshButton) {
                     refreshButton.disabled = isRefreshing || limited;
                     refreshButton.style.cursor = (isRefreshing || limited) ? 'not-allowed' : 'pointer';
@@ -974,8 +981,8 @@ async function updatePopup(retries = 5) {
     if (existingRegionButton && regionButtonAdded) {
         const regionDropdown = document.getElementById('regionDropdown');
         const regionListContainer = document.getElementById('rovalra-region-list-container');
-        const refreshButton = regionDropdown?.querySelector('button[title="Refresh Server List"]');
-        const loadMoreButton = regionDropdown?.querySelector('button[title="Load More Servers"]');
+        const refreshButton = regionDropdown?.querySelector('button[title="Refrescar Lista de Servidores"]'); // Refresh Server List
+        const loadMoreButton = regionDropdown?.querySelector('button[title="Cargar Más Servidores"]'); // Load More Servers
 
         if (regionListContainer && !regionListContainer.dataset.scrollListenerAttached) {
              addScrollListenerToListContainer(regionListContainer);
@@ -1022,7 +1029,7 @@ async function updatePopup(retries = 5) {
 
     const regionDropdownButton = document.createElement('button');
     regionDropdownButton.id = 'regionDropdownButton';
-    regionDropdownButton.textContent = 'Regions ';
+    regionDropdownButton.textContent = 'Regiones ';
     const globeSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     globeSVG.setAttribute("width", "17");
     globeSVG.setAttribute("height", "17");
@@ -1064,6 +1071,7 @@ async function updatePopup(retries = 5) {
 
     const regionDropdown = document.createElement('div');
     regionDropdown.id = 'regionDropdown';
+    // If the list is doesn't desplay every server, replace max-height with the number 500px
     regionDropdown.style.cssText = `
         position: absolute; top: 100%; left: 0;
         margin-top: 5px; display: none;
@@ -1071,7 +1079,7 @@ async function updatePopup(retries = 5) {
         border: 1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.15)' : '#ccc'};
         border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         z-index: 10000; padding: 8px; min-width: 300px; max-width: 400px;
-        max-height: 400px; overflow: hidden;
+        max-height: 500px; overflow: hidden; 
         color: ${isDarkMode ? '#ffffff' : '#392213'};
     `;
 
@@ -1087,17 +1095,17 @@ async function updatePopup(retries = 5) {
         iconImage.src = (typeof GM_getResourceURL === 'function') ? GM_getResourceURL("icon128") : chrome.runtime.getURL("Assets/icon-128.png");
     } catch (e) { iconImage.src = 'Assets/icon-128.png'; }
     iconImage.alt = "RoValra Icon";
-    iconImage.style.cssText = 'width: 20px; height: 20px; margin-right: 8px;';
+    iconImage.style.cssText = 'width: 20; height: 20px; margin-right: 8px;';
     const titleText = document.createElement('p');
-    titleText.textContent = "RoValra Region Selector";
-    titleText.style.cssText = `color: ${isDarkMode ? 'white' : 'rgb(39, 41, 48)'}; font-size: 16px; font-weight: 700; margin: 0; flex-grow: 1;`;
+    titleText.textContent = "Selección de Region - RoValra"; // OH MY GOD WHERE WERE YOU.
+    titleText.style.cssText = `color: ${isDarkMode ? 'white' : 'rgb(39, 41, 48)'}; font-size: 16px; font-weight: 600; margin: 0; flex-grow: 1;`;
 
     const buttonContainer = document.createElement('div');
     buttonContainer.style.cssText = `display: flex; gap: 5px;`;
 
     const refreshButton = document.createElement('button');
     refreshButton.innerHTML = '↻';
-    refreshButton.title = 'Refresh Server List';
+    refreshButton.title = 'Refrescar Lista de Servidores'; // Refresh Server List
     refreshButton.style.cssText = `
         background: none; border: none;
         color: ${isDarkMode ? '#ccc' : '#555'};
@@ -1119,7 +1127,7 @@ async function updatePopup(retries = 5) {
     loadMoreButton.innerHTML = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M21 21L16.65 16.65M11 6C13.7614 6 16 8.23858 16 11M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`;
-    loadMoreButton.title = 'Load More Servers';
+    loadMoreButton.title = 'Cargar Más Servidores'; // Load More Servers
     loadMoreButton.style.cssText = `
         background: none; border: none;
         color: ${(nextPageCursor) ? (isDarkMode ? '#ccc' : '#555') : (isDarkMode ? '#888' : '#999')};
@@ -1413,7 +1421,7 @@ async function populateRegionList(listContainer) {
                     if (dropdown) dropdown.style.display = 'none';
                 };
             } else {
-                listItem.title = `No servers currently found in ${fullName}`;
+                listItem.title = `No se han encontrado servidores en ${fullName}`; // No servers currently found in ${fullName
             }
 
             const nameSpan = document.createElement('span');
@@ -1441,7 +1449,7 @@ async function populateRegionList(listContainer) {
 
         if (!unknownHeader) {
              unknownHeader = document.createElement('div');
-             unknownHeader.textContent = "Unknown";
+             unknownHeader.textContent = "Desconocido";
              unknownHeader.style.cssText = `
                 padding: 8px 12px 4px 12px; font-size: 12px;
                 font-weight: 600; color: ${isDarkMode ? '#eeeeee' : '#555555'};
@@ -1465,10 +1473,10 @@ async function populateRegionList(listContainer) {
         listItem.onmouseover = null;
         listItem.onmouseout = null;
         listItem.onclick = null;
-        listItem.title = `Servers with unidentifiable locations (${unknownServerCount} found)`;
+        listItem.title = `Servidores con localizaciones irreconocibles (${unknownServerCount} encontrado)`; // Servers with unidentifiable locations (${unknownServerCount} found)
 
         const nameSpan = document.createElement('span');
-        nameSpan.textContent = "Unknown Location";
+        nameSpan.textContent = "Localización Desconocida";
         nameSpan.style.cssText = `font-size: 14px; font-weight: 500; color: ${isDarkMode ? '#e0e0e0' : '#333333'};`;
 
         const countSpan = document.createElement('span');
@@ -1546,7 +1554,7 @@ async function populateRegionList(listContainer) {
                     const headerContainer = document.createElement('div');
                     headerContainer.style.cssText = `padding: 15px 20px; border-bottom: 1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;`;
                     const title = document.createElement('h1');
-                    title.textContent = `Servers in ${getFullLocationName(region)}`;
+                    title.textContent = `Servidores en ${getFullLocationName(region)}`;
                     title.style.cssText = `margin: 0; font-size: 20px; font-weight: 700;`;
                     headerContainer.appendChild(title);
 
@@ -1593,7 +1601,7 @@ async function populateRegionList(listContainer) {
                         };
                     const closeButton = document.createElement('button');
                         closeButton.id = 'rovalra-overlay-close-button';
-                        closeButton.textContent = 'Close';
+                        closeButton.textContent = 'Cerrar';
                         closeButton.style.cssText = `
                             padding: 6px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600;
                             background-color: ${isDarkMode ? '#444' : '#ddd'}; border: 1px solid ${isDarkMode ? '#666' : '#bbb'};
@@ -1625,7 +1633,7 @@ async function populateRegionList(listContainer) {
                     if (!regionSpecificServers[region] || regionSpecificServers[region].length === 0) {
                         const focusButton = document.createElement('button');
                         focusButton.id = 'focus-region-button';
-                        focusButton.textContent = 'Focus on this region';
+                        focusButton.textContent = 'Enfocarse en esta región'; // Focus on this region
                         focusButton.style.cssText = `
                             padding: 6px 15px; border-radius: 6px; cursor: pointer; 
                             font-size: 14px; font-weight: 600;
@@ -1636,7 +1644,7 @@ async function populateRegionList(listContainer) {
                         `;
                         focusButton.onclick = async () => {
                             focusButton.disabled = true;
-                            focusButton.textContent = 'Loading...';
+                            focusButton.textContent = 'Cargando...'; // Loading...
                             focusButton.style.opacity = '0.6';
                             
                             await getServerInfo(placeId, null, [region], true, null, region);
@@ -1651,7 +1659,7 @@ async function populateRegionList(listContainer) {
                             await renderFullServerList();
                             
                             focusButton.disabled = false;
-                            focusButton.textContent = 'Focus on this region';
+                            focusButton.textContent = 'Enfocarse en esta región'; // Focus on this region
                             focusButton.style.opacity = '1';
                         };
                         controlsContainer.appendChild(focusButton);
@@ -1714,7 +1722,7 @@ async function populateRegionList(listContainer) {
                     padding: 20px;
                     color: ${isDarkMode ? '#aaa' : '#666'};
                 `;
-                loadingPlaceholder.textContent = 'Loading servers...';
+                loadingPlaceholder.textContent = 'Cargando servidores...'; // Loading servers
                 listElement.appendChild(loadingPlaceholder);
 
                 setTimeout(async () => {
@@ -1767,14 +1775,14 @@ async function populateRegionList(listContainer) {
                         
                     } catch (error) {
                         console.error('Error loading initial servers:', error);
-                        loadingPlaceholder.textContent = 'Error loading servers. Please try again.';
+                        loadingPlaceholder.textContent = 'Error al cargar los servidores. Por favor, intente de nuevo más tarde.'; // Error loading servers. Please try again.
                     }
                 }, 0);
             }
 
             function addLoadMoreButton(listElement, isDarkMode) {
                 const loadMoreButton = document.createElement('button');
-                loadMoreButton.textContent = 'Load More Servers';
+                loadMoreButton.textContent = 'Cargar más servidores'; // Load More Servers
                 loadMoreButton.style.cssText = `
                     margin: 15px auto;
                     padding: 8px 16px;
@@ -1795,7 +1803,7 @@ async function populateRegionList(listContainer) {
                     if (isLoading) return;
                     isLoading = true;
                     loadMoreButton.style.opacity = '0.7';
-                    loadMoreButton.textContent = 'Loading...';
+                    loadMoreButton.textContent = 'Cargando...'; // Loading
                     
                     try {
                         const nextBatch = serverListState.servers.slice(
@@ -1853,11 +1861,11 @@ async function populateRegionList(listContainer) {
                         }
                     } catch (error) {
                         console.error('Error loading more servers:', error);
-                        loadMoreButton.textContent = 'Error loading more servers';
+                        loadMoreButton.textContent = 'Error al cargar más servidores...'; // Error loading more servers
                     } finally {
                         isLoading = false;
                         loadMoreButton.style.opacity = '1';
-                        loadMoreButton.textContent = 'Load More Servers';
+                        loadMoreButton.textContent = 'Cargar más servidores'; // Load More Servers
                     }
                 };
                 
@@ -2065,7 +2073,7 @@ async function populateRegionList(listContainer) {
                     profilePicturesRow.appendChild(plusCount);
                 } else if (server.playing === 0 && playerTokens.length === 0) {
                     const noPlayersText = document.createElement('div');
-                    noPlayersText.textContent = 'No players online';
+                    noPlayersText.textContent = 'No hay jugadores en linea.'; // No players online
                     noPlayersText.style.cssText = `
                         font-size: 14px;
                         color: ${isDarkMode ? '#888' : '#777'};
@@ -2114,7 +2122,7 @@ async function populateRegionList(listContainer) {
                 buttonsContainer.className = 'buttons-container';
 
                 const joinButton = document.createElement('button');
-                joinButton.textContent = 'Join';
+                joinButton.textContent = 'Unirse'; // Join
                 joinButton.className = `server-button join-button ${isDarkMode ? 'dark' : 'light'}`;
                 joinButton.disabled = server.playing >= server.maxPlayers;
                 if (!joinButton.disabled) {
@@ -2134,26 +2142,26 @@ async function populateRegionList(listContainer) {
                 }
 
                 const shareButton = document.createElement('button');
-                shareButton.textContent = 'Share';
+                shareButton.textContent = 'Compartir'; 
                 shareButton.className = `server-button share-button ${isDarkMode ? 'dark' : 'light'}`;
                 shareButton.onclick = () => {
                     const link = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${serverId}`;
                     navigator.clipboard.writeText(link).then(() => {
-                        shareButton.textContent = 'Copied!';
+                        shareButton.textContent = '¡Copiado!';
                         shareButton.style.backgroundColor = isDarkMode ? '#3a7' : '#afc';
                         shareButton.style.borderColor = isDarkMode ? '#4b8' : '#bge';
                         shareButton.style.color = isDarkMode ? 'white' : '#141';
                         setTimeout(() => { 
-                            shareButton.textContent = 'Share'; 
+                            shareButton.textContent = 'Compartir'; 
                             shareButton.className = `server-button share-button ${isDarkMode ? 'dark' : 'light'}`;
                         }, 1500);
                     }).catch(err => {
-                        shareButton.textContent = 'Error!';
+                        shareButton.textContent = '❗❗Error';
                         shareButton.style.backgroundColor = isDarkMode ? '#a55' : '#fcc';
                         shareButton.style.borderColor = isDarkMode ? '#b66' : '#ebb';
                         shareButton.style.color = isDarkMode ? 'white' : '#411';
                         setTimeout(() => {
-                            shareButton.textContent = 'Share';
+                            shareButton.textContent = 'Compartir';
                             shareButton.className = `server-button share-button ${isDarkMode ? 'dark' : 'light'}`;
                         }, 1500);
                     });

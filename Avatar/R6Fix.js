@@ -1,3 +1,10 @@
+/*
+NOTES:
+        - Translation done?
+        I rather not touch this :p
+
+
+*/
 (function() {
     if (!window.location.href.includes('/my/avatar')) {
         return;

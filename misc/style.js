@@ -1,3 +1,10 @@
+/*
+NOTES:
+        - Translation done? 
+        I rather not touch this :p
+
+
+*/
 const style = document.createElement('style');
 style.textContent = `
     .tab-button {
