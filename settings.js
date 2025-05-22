@@ -3,6 +3,14 @@
         - Translation done? ✅
         translating is so funsies heusuiawud8cn mxhn 89y7wq3
 
+        Fixes:
+         - Fixed RoValra's Configuration button not showing up on if it has .com/YOURLANGUAGE/my... (ln. 1468 - 1490)
+
+        Added: 
+         - Added logo to the header of RoValra's Configuration title (ln. 1078 - 1088)
+         - Added a return/back button, so that the user can return quickly whenever they want. (ln. 1469 - 1497)
+
+
 */
 const REGIONS = {
     "AUTO": { city: " -- No se ha seleccionado. -- ", state: null, country: null },
@@ -499,6 +507,7 @@ function updateThemeStyles_rovalraPage(theme) {
 
     const contentContainer = document.querySelector('#content-container');
     const rovalraHeader = contentContainer?.querySelector('#react-user-account-base > h1');
+    
 
     if (contentContainer) {
         contentContainer.style.borderRadius = '8px';
@@ -570,76 +579,87 @@ async function applyTheme() {
         updateThemeStyles_settingsPage(currentTheme);
     }
 }
-
+// let me try to fix this with this function
+// so what does this is uh, check if you're on the account page and checks the language between .com/*language*/my...
+// it also checks if you dont have it, meaning that if you're on default it'll still load! :p
+function isRobloxAccountPage() {
+    return /^https:\/\/www\.roblox\.com(\/[a-zA-Z-]+)?\/my\/account/.test(window.location.href);
+}
+// NOTE FROM XONTRON: UH, let me see if i can fix this. it wont load when you have another language.
+// ok i fixed it yupie
 function addCustomButton() {
-    if (!window.location.href.startsWith('https://www.roblox.com/my/account')) {
+
+    if (!isRobloxAccountPage()) {
         return;
     }
+        
+    
 
-    const menuList = document.querySelector('ul.menu-vertical[role="tablist"]');
+        const menuList = document.querySelector('ul.menu-vertical[role="tablist"]');
 
-    if (!menuList) {
-        addPopoverButton();
-        return;
-    }
-
-    let divider = menuList.querySelector('li.rbx-divider.thick-height');
-
-    if (!divider) {
-        const lastMenuItem = menuList.querySelector('li.menu-option[role="tab"]:last-of-type');
-        if (!lastMenuItem) {
-            addPopoverButton()
-            return
+        if (!menuList) {
+            addPopoverButton();
+            return;
         }
-        const newDivider = document.createElement('li');
-        newDivider.classList.add('rbx-divider', 'thick-height');
-        newDivider.style.width = '100%';
-        newDivider.style.height = '2px';
-        lastMenuItem.insertAdjacentElement('afterend', newDivider);
-        divider = newDivider;
 
-    } else {
-        divider.style.width = '100%';
-    }
+        let divider = menuList.querySelector('li.rbx-divider.thick-height');
 
-    if (rovalraButtonAdded) {
-        observer.disconnect();
-        return;
-    }
+        if (!divider) {
+            const lastMenuItem = menuList.querySelector('li.menu-option[role="tab"]:last-of-type');
+            if (!lastMenuItem) {
+                addPopoverButton()
+                return
+            }
+            const newDivider = document.createElement('li');
+            newDivider.classList.add('rbx-divider', 'thick-height');
+            newDivider.style.width = '100%';
+            newDivider.style.height = '2px';
+            lastMenuItem.insertAdjacentElement('afterend', newDivider);
+            divider = newDivider;
 
-    const existingButton = menuList.querySelector('li.menu-option > a > span.font-caption-header[textContent="Configuración de RoValra"]'); // RoValra's Settings
-    if (existingButton) {
-        return;
-    }
-    const newButtonListItem = document.createElement('li');
-    newButtonListItem.classList.add('menu-option');
-    newButtonListItem.setAttribute('role', 'tab');
+        } else {
+            divider.style.width = '100%';
+        }
 
-    const newButtonLink = document.createElement('a');
-    newButtonLink.href = 'https://www.roblox.com/my/account?rovalra=info#!/info';
-    newButtonLink.classList.add('menu-option-content');
-    newButtonLink.style.cursor = 'pointer';
-    newButtonLink.style.display = 'flex';
-    newButtonLink.style.alignItems = 'center';
+        if (rovalraButtonAdded) {
+            observer.disconnect();
+            return;
+        }
 
-    const newButtonSpan = document.createElement('span');
-    newButtonSpan.classList.add('font-caption-header');
-    newButtonSpan.textContent = 'Configuración de RoValra'; // RoValra's Settings
-    newButtonSpan.style.fontSize = '12px'
+        const existingButton = menuList.querySelector('li.menu-option > a > span.font-caption-header[textContent="Configuración de RoValra"]'); // RoValra's Settings
+        if (existingButton) {
+            return;
+        }
+        const newButtonListItem = document.createElement('li');
+        newButtonListItem.classList.add('menu-option');
+        newButtonListItem.setAttribute('role', 'tab');
 
-    const logo = document.createElement('img');
-    logo.src = chrome.runtime.getURL("Assets/icon-128.png");
-    logo.style.width = '15px';
-    logo.style.height = '15px';
-    logo.style.marginRight = '5px';
-    logo.style.verticalAlign = 'middle';
+        const newButtonLink = document.createElement('a');
+        newButtonLink.href = 'https://www.roblox.com/my/account?rovalra=info#!/info';
+        newButtonLink.classList.add('menu-option-content');
+        newButtonLink.style.cursor = 'pointer';
+        newButtonLink.style.display = 'flex';
+        newButtonLink.style.alignItems = 'center';
 
-    newButtonLink.appendChild(logo);
-    newButtonLink.appendChild(newButtonSpan);
-    newButtonListItem.appendChild(newButtonLink);
+        const newButtonSpan = document.createElement('span');
+        newButtonSpan.classList.add('font-caption-header');
+        newButtonSpan.textContent = 'Configuración de RoValra'; // RoValra's Settings
+        newButtonSpan.style.fontSize = '12px'
 
-    divider.insertAdjacentElement('afterend', newButtonListItem);
-    rovalraButtonAdded = true;
+        const logo = document.createElement('img');
+        logo.src = chrome.runtime.getURL("Assets/icon-128.png");
+        logo.style.width = '15px';
+        logo.style.height = '15px';
+        logo.style.marginRight = '5px';
+        logo.style.verticalAlign = 'middle';
+
+        newButtonLink.appendChild(logo);
+        newButtonLink.appendChild(newButtonSpan);
+        newButtonListItem.appendChild(newButtonLink);
+
+        divider.insertAdjacentElement('afterend', newButtonListItem);
+        rovalraButtonAdded = true;
+    
 }
 
 function observeContentChanges() {
@@ -1057,7 +1077,19 @@ async function checkRoValraPage() {
     userAccountDiv.id = 'user-account';
 
     let rovalraHeader = document.createElement('h1');
-    rovalraHeader.textContent = 'Configuración de RoValra';
+    // create logo variable
+    const logo = document.createElement('img');
+    logo.src = chrome.runtime.getURL("Assets/icon-128.png");
+    logo.style.width = '50px';
+    logo.style.height = '50px';
+    logo.style.marginRight = '10px';
+    logo.style.verticalAlign = 'middle';
+    // adds the RoValra's logo to the header and ads text
+    rovalraHeader.appendChild(logo);
+    rovalraHeader.appendChild(document.createTextNode('Configuración de RoValra'));
+
+    let rovalraLogo = document.createElement('img');
+    rovalraLogo.src = chrome.runtime.getURL("Assets/icon-128.png");
 
     let settingsContainer = document.createElement('div');
     settingsContainer.id = 'settings-container';
@@ -1097,12 +1129,14 @@ async function checkRoValraPage() {
         const uiContainer = document.createElement('div');
         uiContainer.style.display = 'flex';
         uiContainer.style.flexDirection = 'row';
-        uiContainer.style.gap = '10px';
+        uiContainer.style.gap = '30px';
         uiContainer.style.alignItems = 'flex-start';
         uiContainer.style.position = 'relative';
         uiContainer.style.overflow = 'auto';
         uiContainer.style.width = 'auto';
         uiContainer.style.justifyContent = 'flex-start';
+        uiContainer.style.marginTop = '15px';
+        
         settingsContainer.appendChild(uiContainer);
         settingsContainer.style.display = 'block';
         settingsContainer.style.position = 'relative';
@@ -1267,7 +1301,7 @@ async function checkRoValraPage() {
             // TODO-NOTES: Woah, basically the information it gets brought up if you click RoValra's settings, so kewl
             // Start - Info section
             {
-                text: "Información", content: `
+                text: "ℹ️ Información", content: `
                    <div style="padding: 15px; border-radius: 8px;">
                    
                    <!-- Title: RoValra Information! -->
@@ -1314,7 +1348,7 @@ async function checkRoValraPage() {
 
             // Start - Credits section
             {
-                text: "Créditos", content: `
+                text: "📃🙇‍♂️ Créditos", content: `
                     <div style="padding: 15px; border-radius: 8px;">
                         <!-- Credits Title: RoValra's Credits! -->
                             <h2 style="margin-bottom: 10px;">RoValra le complace a dar créditos a:</h2>
@@ -1418,11 +1452,49 @@ async function checkRoValraPage() {
         ];
 
         uiContainer.innerHTML = '';
+        
+        // made for the menu list and back button
+        const sidebarContainer = document.createElement('div');
+        sidebarContainer.style.display = 'flex';
+        sidebarContainer.style.flexDirection = 'column';
+        sidebarContainer.style.alignItems = 'block';
+        sidebarContainer.style.minWidth = '160px';
 
+        
         const menuList = document.createElement('ul');
         menuList.classList.add('menu-vertical');
         menuList.setAttribute('role', 'tablist');
         menuList.style.width = '160px';
+
+        // creates a bigass button so it can go back to my account settings, hell yeah
+        const backButton = document.createElement('button');
+        backButton.textContent = 'Volver';
+        backButton.style.position = 'block';
+        backButton.style.marginTop = '30px'; // want to separate it from the menu? guess what, u requiere this
+        backButton.style.top = '20px';
+        backButton.style.left = '10px';
+        backButton.style.padding = '8px 18px';
+        backButton.style.borderRadius = '6px';
+        backButton.style.background = '#a93226';
+        backButton.style.color = '#fff';
+        backButton.style.fontWeight = 'bold';
+        backButton.style.border = 'none';
+        backButton.style.cursor = 'pointer';
+        backButton.style.zIndex = '2000';
+        backButton.addEventListener('mouseenter', function() {
+        backButton.style.background = '#7b241c'; // if hovered, display a darker red color
+        });
+        backButton.addEventListener('mouseleave', function() {
+            backButton.style.background = '#a93226'; // if not hovered, display the original red color
+        });
+        backButton.addEventListener('click', function() {
+            const match = window.location.pathname.match(/^\/([a-zA-Z-]+)\/my\/account/);
+            let baseUrl = "https://www.roblox.com/my/account";
+            if (match) {
+                baseUrl = `https://www.roblox.com/${match[1]}/my/account`;
+            }
+            window.location.href = baseUrl;
+        });
 
         buttonData.forEach((item, index) => {
             const listItem = document.createElement('li');
@@ -1434,10 +1506,25 @@ async function checkRoValraPage() {
             link.classList.add('menu-option-content');
             link.href = `#!/${item.text.toLowerCase()}`;
 
+
+            // NOTE: it brings u back to the settings page, leave as is unless
+            if (item.text === "Volver") {
+                listItem.style.marginTop = "32px";
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const match = window.location.pathname.match(/^\/([a-zA-Z-]+)\/my\/account/); // shit dude, i cant remember what was this for but it was to detect if you have a language set that isnt english
+                    let baseUrl = "https://www.roblox.com/my/account";
+                    if (match) {
+                        baseUrl = `https://www.roblox.com/${match[1]}/my/account`;
+                    }
+                    window.location.href = baseUrl;
+                });
+            }
             if (item.text.toLowerCase() === currentHash) {
                 link.classList.add('active');
                 link.setAttribute('aria-current', 'page');
             }
+            
 
             const span = document.createElement('span');
             span.classList.add('font-caption-header');
@@ -1643,10 +1730,14 @@ async function checkRoValraPage() {
         contentContainer.style.position = 'relative';
         contentContainer.style.marginLeft = '10px';
         contentContainer.style.maxWidth = '750px';
-        contentContainer.style.minWidth = '750px';
+       
         contentContainer.style.backgroundColor = currentTheme === 'dark' ? 'rgb(39, 41, 48)' : 'rgb(247, 247, 248)';
-
-        uiContainer.appendChild(menuList);
+        
+        // sooo this is the culprit?
+        // ok yeah it was these 2 lines that i had to create smh
+        sidebarContainer.appendChild(menuList);
+        uiContainer.appendChild(sidebarContainer);
+        sidebarContainer.appendChild(backButton);
         uiContainer.appendChild(contentContainer);
 
         const tabToMatch = menuList.querySelector(`#${currentHash} .menu-option-content`);
@@ -1659,6 +1750,7 @@ async function checkRoValraPage() {
                 
                 const contentContainer = document.querySelector('#content-container');
                 if (contentContainer) {
+                    // Seperara
                     if (currentHash === 'settings') {
                         contentContainer.innerHTML = item.content;
                     } else {
