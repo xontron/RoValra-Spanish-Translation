@@ -8,3 +8,11 @@ ___
 PS: todavía tengo que mejorar esto :,v
 
 ___
+
+# **Planes:**
+
+➖ Terminar de traducir la extension
+
+➖ Seguir implementando mejoras siempre y cuando sea posible
+
+❌ Prepararme mentalmente para la proxima actualizacion del codigo original (💔)
