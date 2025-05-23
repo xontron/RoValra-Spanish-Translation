@@ -30,7 +30,7 @@ const REGIONS = {
     "GB": { latitude: 51.5074, longitude: -0.1278, city: "Londres", state: null, country: "Reino Unido" },
     "IN": { latitude: 19.0760, longitude: 72.8777, city: "Bombai", state: null, country: "India" }
 };
-
+// settings text, dont touchie since its already translated
 const SETTINGS_CONFIG = {
     Catalog: {
         title: "Catálogo",
@@ -117,7 +117,7 @@ const SETTINGS_CONFIG = {
         settings: {
             userGamesEnabled: {
                 label: "Habilitar Experiencias Ocultas", // Enable Hidden User Games
-                description: ["Esta opcion permite ver experiencias/juegos ocultos de tal usuario."], // Shows a users hidden games on their profile.
+                description: ["Esta opción permite ver experiencias/juegos ocultos de tal usuario."], // Shows a users hidden games on their profile.
                 type: "checkbox",
                 default: true
             },
@@ -310,8 +310,8 @@ const THEME_CONFIG = {
         buttonHover: 'rgb(224, 226, 227)',
         buttonActive: 'rgb(210, 212, 213)',
         buttonBorder: '0 solid rgba(0, 0, 0, 0.1)',
-        discordLink: '#3479b7',
-        githubLink: '#1e722a'
+        discordLink: '#3479b7', // i should use this later but uhhh, no
+        githubLink: '#1e722a' // ^^^
     },
     dark: {
         content: 'rgb(39, 41, 48)',
@@ -325,7 +325,7 @@ const THEME_CONFIG = {
         buttonHover: 'rgb(57, 60, 64)',
         buttonActive: 'rgb(69, 73, 77)',
         buttonBorder: '0px solid rgba(255, 255, 255, 0.1)',
-        discordLink: '#7289da',
+        discordLink: '#7289da', 
         githubLink: '#2dba4e'
     }
 };
@@ -374,7 +374,7 @@ let settingsSyncInterval = null;
 
 const syncSettingsVisualState = async () => {
     const settingsContent = document.querySelector('#setting-section-content');
-    if (settingsContent && window.location.href.includes('?rovalra=info')) {
+    if (settingsContent && window.location.href.includes('?rovalra=info')) { // ?rovalra=info
         await initSettings(settingsContent);
     }
 };
@@ -394,7 +394,7 @@ const stopSettingsSync = () => {
 };
 
 document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && window.location.href.includes('?rovalra=info')) {
+    if (document.visibilityState === 'visible' && window.location.href.includes('?rovalra=info')) { // ?rovalra=info
         syncSettingsVisualState();
     }
 });
@@ -635,7 +635,7 @@ function addCustomButton() {
         newButtonListItem.setAttribute('role', 'tab');
 
         const newButtonLink = document.createElement('a');
-        newButtonLink.href = 'https://www.roblox.com/my/account?rovalra=info#!/info';
+        newButtonLink.href = 'https://www.roblox.com/my/account?rovalra=info#!/información'; // ?rovalra=info
         newButtonLink.classList.add('menu-option-content');
         newButtonLink.style.cursor = 'pointer';
         newButtonLink.style.display = 'flex';
@@ -720,7 +720,7 @@ function addPopoverButton() {
     newButtonListItem.classList.add('list-item', 'menu-option');
 
     const newButtonLink = document.createElement('a');
-    newButtonLink.href = 'https://www.roblox.com/my/account?rovalra=info#!/info';
+    newButtonLink.href = 'https://www.roblox.com/my/account?rovalra=info#!/información'; // ?rovalra=info
     newButtonLink.classList.add('menu-option-content');
     newButtonLink.style.cursor = 'pointer';
     newButtonLink.style.display = 'flex';
@@ -1021,7 +1021,7 @@ async function updateContent(buttonInfo, contentContainer, buttonData) {
 }
 
 async function checkRoValraPage() {
-    if (!window.location.href.includes('?rovalra=info')) {
+    if (!window.location.href.includes('?rovalra=info')) { // ?rovalra=info
         isSettingsPage = false;
         return;
     }
@@ -1032,12 +1032,12 @@ async function checkRoValraPage() {
         return;
     }
 
-    const currentHash = window.location.hash.replace('#!/', '').replace('#!', '') || 'info';
+    const currentHash = window.location.hash.replace('#!/', '').replace('#!', '') || 'información'; // info
 
     window.removeEventListener('hashchange', handleHashChange);
     
     function handleHashChange() {
-        const newHash = window.location.hash.replace('#!/', '').replace('#!', '') || 'info';
+        const newHash = window.location.hash.replace('#!/', '').replace('#!', '') || 'información'; // info
         const targetLink = document.querySelector(`#${newHash} .menu-option-content`);
         if (targetLink && !targetLink.classList.contains('active')) {
             document.querySelectorAll('.menu-option-content').forEach(el => {
@@ -1101,15 +1101,20 @@ async function checkRoValraPage() {
     containerMain.appendChild(contentDiv);
     await applyTheme(); 
     if (rovalraHeader && rovalraHeader.textContent === 'Configuración de RoValra' && settingsContainer) {
+        // note: this makes the container's content box more larger and removes the limits.
+        // i could remove the background but meh. :p
         contentDiv.style.cssText = `
-            width: 100% !important;
+            width: 90vw !important;
+            max-width: 1400px !important;
+            min-width: 600px !important;
             height: auto !important;
-            border-radius: 10px !important;
-            overflow: hidden !important;
+            min-height: 700px !important;
+            border-radius: 24px !important;
+            overflow: visible !important;
             padding-bottom: 25px !important;
             padding-top: 25px !important;
-            min-height: 800px !important;
             position: relative !important;
+            margin: 0 auto !important;
         `;
         if (userAccountDiv) {
             userAccountDiv.style.cssText = `
@@ -1136,6 +1141,8 @@ async function checkRoValraPage() {
         uiContainer.style.width = 'auto';
         uiContainer.style.justifyContent = 'flex-start';
         uiContainer.style.marginTop = '15px';
+
+        
         
         settingsContainer.appendChild(uiContainer);
         settingsContainer.style.display = 'block';
@@ -1143,12 +1150,34 @@ async function checkRoValraPage() {
         settingsContainer.style.overflow = 'visible'
         const style = document.createElement('style');
 
+
         const isInitiallyDark = currentTheme === 'dark';
         const initialButtonBg = isInitiallyDark ? 'rgb(45, 48, 51)' : 'rgb(227, 230, 232)';
         const initialButtonText = isInitiallyDark ? 'rgb(230, 230, 230)' : 'rgb(36, 41, 45)';
         const initialButtonActiveBg = isInitiallyDark ? 'rgb(69, 73, 77)' : 'rgb(204, 208, 212)';
 
         style.textContent = `
+            
+            .github-button {
+                background:rgb(84, 110, 138);
+                color: #fff;
+                border: none;
+                padding: 10px 18px;
+                border-radius: 6px;
+                font-weight: bold;
+                cursor: pointer;
+                margin-right: 12px; 
+            }
+            .github-button:hover {
+                background:rgb(54, 70, 87);
+                color: #fff;
+                border: none;
+                padding: 10px 18px;
+                border-radius: 6px;
+                font-weight: bold;
+                cursor: pointer;
+                margin-right: 12px; 
+            }
             .setting {
                 display: flex;
                 flex-direction: column;
@@ -1319,28 +1348,21 @@ async function checkRoValraPage() {
                    <!-- NOTES: RoValra's Notes -->
                         <div style="margin-top: 5px;">
                             <center><h3 style="font-size: 20px; margin-top: 20px; margin-left: 30px;"> Notas:</h3></center>
-                            <p style="; margin-top: 20px;  margin-left: 30px; margin-right: 30px;">Todo esto es posible corriéndolo localmente.</p> <!-- This is possible by running almost everything locally.-->
+                            <p style="; margin-top: 20px;  margin-left: 30px; margin-right: 30px;"><center>Todo esto es posible corriéndolo localmente.</center></p> <!-- This is possible by running almost everything locally.-->
 
                             <!-- If you have any feature suggestions please let me know in my Discord server or via GitHub -->
                             <div style="margin-top: 5px;">
-                                <p style="; margin-top: 20px; margin-bottom: 20px; margin-left: 30px; margin-right: 30px;">Si tienes alguna sugerencia para alguna característica, por favor, ¡haznos saber en nuestro servidor de Discord o vía GitHub!</p>
+                                <p style="; margin-top: 20px; margin-bottom: 20px; margin-left: 50px; margin-right: 50px;"><center>Si tienes alguna sugerencia para alguna característica, por favor, ¡haznos saber en nuestro servidor de Discord o vía GitHub!</center></p>
                                 <!-- Feel free to report any bugs big or small to me on GitHub. -->
                                 <div style="margin-top: 5px;">
-                                <center><p style="">¡No dudes en reportar fallos en nuestra página de GitHub!</p>
+                                <center><p style="; margin-top: 150px;" title="o sea, en el repositorio original de github. :v">¡No dudes en reportar fallos en nuestra página de GitHub!</p>
                                 <p style="; color: #abb2b9; font-size: 10px; margin-bottom: 10px;"> (NOTITA CHULA: ey, si vas a hacer esto, procura hablar en inglés, ya que el creador no habla español :P) </p></center>
                             </div>
-                            <hr style="width: 300px; margin-top: 20px; margin-bottom: 20px;">
+                            <hr style="width: 300px; margin-top: 100px; margin-bottom: 20px;">
                     <!-- End of RoValra's Notes -->
 
                    <div style="margin-top: 10px; font-size: 15px;">
-                        <center>
-                           <a href="https://discord.gg/GHd5cSKJRk" target="_blank" style="; margin-right: 20px;" title="oye, no me vengas a mi que no te avise sobre que hablan en ingles, no seas idiota">🗨 Servidor de RoValra (Inglés)</a> <!-- Discord Server -->
-                           <a href="https://github.com/NotValra/RoValra" target="_blank" title="quiero pasta :(">
-                           Repositorio Github - RoValra (Inglés/Original)
-                           <img src="${chrome.runtime.getURL("Assets/icon-128.png")}" style="width: 20px; height: 20px; margin-left: 5px; vertical-align: middle;" />
-                           </a> <br> <!-- GitHub Repo -->
-                           <a href="https://www.roblox.com/games/9676908657/Gamepasses#!/store" style="margin-left: 5px; target="_blank" title="¿Deseas apoyar al creador de RoValra? Aquí se ofrecen algunas opciones para que esto sea posible.">🦭 ¡Apoya a Valra en Roblox!</a><!-- Support me on Roblox -->
-                        </center>
+                   <p style="; margin-top: 20px; margin-bottom: 20px; margin-left: 30px; margin-right: 30px;">Traducido por: Xontron en GitHub</p>
                    </div>
                </div>
                `},
@@ -1452,28 +1474,220 @@ async function checkRoValraPage() {
         ];
 
         uiContainer.innerHTML = '';
+
         
-        // made for the menu list and back button
+        // made for the menu list and back button (actually nevermind)
         const sidebarContainer = document.createElement('div');
         sidebarContainer.style.display = 'flex';
         sidebarContainer.style.flexDirection = 'column';
         sidebarContainer.style.alignItems = 'block';
-        sidebarContainer.style.minWidth = '160px';
+        sidebarContainer.style.minWidth = '60px';
 
         
         const menuList = document.createElement('ul');
         menuList.classList.add('menu-vertical');
         menuList.setAttribute('role', 'tablist');
-        menuList.style.width = '160px';
+        menuList.style.width = '500px';
 
-        // creates a bigass button so it can go back to my account settings, hell yeah
+        // create a container for the link buttons
+        const linksContainer = document.createElement('div');
+        linksContainer.style.display = 'grid';
+        linksContainer.style.marginRight = 'auto'; // dont touch this
+        linksContainer.style.marginLeft = 'auto'; // ^^^
+        linksContainer.style.gap = '12px';
+        linksContainer.style.marginTop = '100px';
+
+        // GitHub Button
+        // import logo yesyes
+        const githubIcon = document.createElement('img');
+        githubIcon.src = chrome.runtime.getURL("Images/github-icon-white.png"); // this shit isnt working
+        githubIcon.alt = 'GitHub Logo';
+        githubIcon.style.width = '20px';
+        githubIcon.style.height = '20px';
+        githubIcon.style.verticalAlign = 'middle';
+
+        const githubText = document.createElement('span');
+        githubText.textContent = ' RoValra - (GitHub Original/Inglés)';
+
+
+        const githubButton = document.createElement('button');
+        githubButton.title = 'Código original sin traducir.'
+        githubButton.style.background = '#24292e';
+        githubButton.style.alignItems = 'center'; // center the contents inside from the button to the center
+        githubButton.style.display = 'flex'; // what did this do again? note: leave it as flex or else u'll fuck up the page
+        githubButton.style.gap = '8px'; // separates the text and logo
+        githubButton.style.color = '#fff';
+        githubButton.style.width = '320px';
+        githubButton.style.border = 'none';
+        githubButton.style.marginLeft = '20px';
+        githubButton.style.marginRight = '20px';
+        githubButton.style.padding = '10px 18px';
+        githubButton.style.borderRadius = '30px';
+        githubButton.style.fontWeight = 'bold';
+        githubButton.style.cursor = 'pointer'; 
+        githubButton.addEventListener('mouseenter', function() {
+            githubButton.style.background = '#515d69'; // if hovered, display a darker color
+        });
+        githubButton.addEventListener('mouseleave', function() {
+            githubButton.style.background = '#24292e'; // if not hovered, display the original color
+        });
+        githubButton.addEventListener('click', () => {
+            window.open('https://github.com/NotValra/RoValra', '_blank');
+        });
+
+        
+
+        // Discord Button
+        // im tired docummenting sowwy
+        const discordIcon = document.createElement('img');
+        discordIcon.src = chrome.runtime.getURL("Images/discord-white-icon.png");
+        discordIcon.alt = 'Discord Logo';
+        discordIcon.style.width = '20px';
+        discordIcon.style.height = '20px';
+        discordIcon.style.marginTop = '3px';
+        discordIcon.style.marginBottom = '3px';
+        discordIcon.style.verticalAlign = 'middle';
+        
+        const discordText = document.createElement('span');
+        discordText.textContent = ' Servidor de Valra - (Inglés)';
+
+        const discordButton = document.createElement('button');
+        discordButton.title = 'Servidor de Discord de RoValra. (eyy, procura hablar inglés aquí eh ;3)';
+        discordButton.style.background = '#5865F2';
+        discordButton.style.display = 'flex';
+        discordButton.style.alignItems = 'center';
+        discordButton.style.gap = '10px';
+        discordButton.style.marginLeft = '45px';
+        discordButton.style.marginRight = '45px';
+        discordButton.style.width = '270px';
+        discordButton.style.color = '#fff';
+        discordButton.style.border = 'none';
+        discordButton.style.padding = '10px 18px';
+        discordButton.style.borderRadius = '30px';
+        discordButton.style.fontWeight = 'bold';
+        discordButton.style.cursor = 'pointer';
+        
+        discordButton.addEventListener('mouseenter', function() {
+            discordButton.style.background = '#6973d1'; // if hovered, display a darker color
+        });
+        discordButton.addEventListener('mouseleave', function() {
+            discordButton.style.background = '#5865F2'; // if not hovered, display the original color
+        });
+        discordButton.addEventListener('click', () => {
+            window.open('https://discord.gg/GHd5cSKJRk', '_blank');
+        });
+
+        // Roblox Button
+        // ok honestly i have no idea why im using RoValra's logo for the Roblox button,
+        // also i may change the variables in some future. guess ill have to use it somehow lol
+        const robloxIcon = document.createElement('img');
+        robloxIcon.src = chrome.runtime.getURL('Assets/icon-128.png');
+        robloxIcon.alt = "RoValra's Logo";
+        robloxIcon.style.width = '20px';
+        robloxIcon.style.height = '20px';
+        robloxIcon.style.verticalAlign = 'middle';
+
+        const robloxText = document.createElement('span');
+        robloxText.textContent = ' ¡Apoya a Valra en Roblox!';
+
+        const robloxButton = document.createElement('button');
+        robloxButton.title = "¿Deseas apoyar al creador de RoValra? Aquí se ofrecen algunas opciones para que esto sea posible."
+        robloxButton.style.background = '#2e86c1 ';
+        robloxButton.style.display = 'flex';
+        robloxButton.style.alignItems = 'center';
+        robloxButton.style.width = '270px';
+        robloxButton.style.gap = '8px';
+        robloxButton.style.color = '#fff';
+        robloxButton.style.border = 'none';
+        robloxButton.style.marginLeft = '45px';
+        robloxButton.style.marginRight = '45px';
+        robloxButton.style.padding = '10px 18px';
+        robloxButton.style.borderRadius = '30px';
+        robloxButton.style.fontWeight = 'bold';
+        robloxButton.style.cursor = 'pointer';
+        robloxButton.addEventListener('mouseenter', function() {
+            robloxButton.style.background = '#005e9d'; // if hovered, display a darker color
+        });
+        robloxButton.addEventListener('mouseleave', function() {
+            robloxButton.style.background = '#2e86c1'; // if not hovered, display the original color
+        });
+        robloxButton.addEventListener('click', () => {
+            window.open('https://www.roblox.com/games/9676908657/Gamepasses#!/store', '_blank');
+        });
+
+        // translation github button :p
+        const translationIcon = document.createElement('img'); 
+        translationIcon.src = chrome.runtime.getURL("Images/github-icon-white.png");
+        translationIcon.alt = 'GitHub Logo';
+        translationIcon.style.width = '20px';
+        translationIcon.style.height = '20px';
+        translationIcon.style.verticalAlign = 'middle';
+        
+
+        const translationText = document.createElement('span')
+        translationText.textContent = 'Traducción al Español de RoValra';
+        translationText.style.textShadow = '2px 2px 8px rgba(0,0,0,0.5)';
+        translationText.style.padding = '5px 20px';
+        translationText.style.background = 'linear-gradient(to right, rgba(255,255,255,0.0), rgba(255, 255, 255, 0.7), rgba(255,255,255,0.0))';
+
+
+        const translationButton = document.createElement('button')
+        translationButton.title = 'Repositorio GitHub de Traducción al Español';
+        translationButton.style.backgroundImage = `url('${chrome.runtime.getURL("Images/efefefe.png")}')`;
+        translationButton.style.backgroundSize = 'cover';
+        translationButton.style.backgroundRepeat = 'no-repeat';
+        translationButton.style.backgroundPosition = 'center';
+        translationButton.style.display = 'flex';
+        translationButton.style.alignItems = 'center';
+        translationButton.style.width = '350px';
+        translationButton.style.gap = '8px';
+        translationButton.style.color = '#002244';
+        translationButton.style.border = 'none';
+        translationButton.style.padding = '13px 18px';
+        translationButton.style.borderRadius = '30px';
+        translationButton.style.marginTop = '150px';
+        translationButton.style.marginLeft = '5px';
+        translationButton.style.marginRight = '5px';
+        translationButton.style.fontWeight = 'bold';
+        translationButton.style.cursor = 'pointer';
+        // yeah im not adding a color changing if the mouse is on :skull:
+        translationButton.addEventListener('click', () => {
+            window.open('https://github.com/xontron/RoValra-Spanish-Translation', '_blank');
+        });
+
+
+        // another container lists 
+        // e
+        githubButton.appendChild(githubIcon);
+        githubButton.appendChild(githubText);
+        discordButton.appendChild(discordIcon);
+        discordButton.appendChild(discordText);
+        robloxButton.appendChild(robloxIcon);
+        robloxButton.appendChild(robloxText);
+        translationButton.appendChild(translationIcon);
+        translationButton.appendChild(translationText);
+        linksContainer.appendChild(githubButton);
+        linksContainer.appendChild(discordButton);
+        linksContainer.appendChild(robloxButton);
+        linksContainer.appendChild(translationButton);
+
+
+
+        // creates a button so it can go back to my account settings, hell yeah
+
+        const backButtonContainer = document.createElement('div');
+        backButtonContainer.style.display = 'flex';
+        backButtonContainer.style.flexDirection = 'column';
+        backButtonContainer.style.alignItems = 'start'; // moves the button to the left but uhh, ill just move it anyway.
+        backButtonContainer.style.marginLeft = '200px';
+        backButtonContainer.style.marginTop = '35px'; // separates the menu
+
         const backButton = document.createElement('button');
         backButton.textContent = 'Volver';
-        backButton.style.position = 'block';
-        backButton.style.marginTop = '30px'; // want to separate it from the menu? guess what, u requiere this
+        backButton.style.position = 'flex';
         backButton.style.top = '20px';
         backButton.style.left = '10px';
-        backButton.style.padding = '8px 18px';
+        backButton.style.padding = '18px 18px';
         backButton.style.borderRadius = '6px';
         backButton.style.background = '#a93226';
         backButton.style.color = '#fff';
@@ -1496,6 +1710,9 @@ async function checkRoValraPage() {
             window.location.href = baseUrl;
         });
 
+        backButtonContainer.appendChild(backButton);
+
+        // uh
         buttonData.forEach((item, index) => {
             const listItem = document.createElement('li');
             listItem.id = item.text.toLowerCase();
@@ -1561,7 +1778,12 @@ async function checkRoValraPage() {
                 if (item.text === "Configuraciones") {
                     contentContainer.innerHTML = item.content;
                     const settingsContent = contentContainer.querySelector('#setting-section-content');
+                    // okay found you, you little shit
                     const sectionButtonsContainer = contentContainer.querySelector('#setting-section-buttons');
+                    // this is to centralize the buttons from the configuration features
+                    sectionButtonsContainer.style.display = 'flex';
+                    sectionButtonsContainer.style.justifyContent = 'center'; 
+                    sectionButtonsContainer.style.marginBottom = '20px';
 
                     const settingSections = Object.keys(SETTINGS_CONFIG).map(sectionName => ({
                         name: SETTINGS_CONFIG[sectionName].title,
@@ -1721,23 +1943,23 @@ async function checkRoValraPage() {
         });
 
         const contentContainer = document.createElement('div');
-        contentContainer.id = 'content-container';
+        // weweweweweweweweweweewewewewewewewewew
         contentContainer.style.flex = '1';
+        contentContainer.style.width = '100%';
+        contentContainer.style.maxWidth = '1200px';
+        contentContainer.style.minHeight = '600px';
         contentContainer.style.overflowY = 'auto';
         contentContainer.style.overflowX = 'auto';
-        contentContainer.style.paddingLeft = '0px';
-        contentContainer.style.zIndex = '1000';
+        contentContainer.style.margin = '0 auto';
         contentContainer.style.position = 'relative';
-        contentContainer.style.marginLeft = '10px';
-        contentContainer.style.maxWidth = '750px';
        
         contentContainer.style.backgroundColor = currentTheme === 'dark' ? 'rgb(39, 41, 48)' : 'rgb(247, 247, 248)';
         
-        // sooo this is the culprit?
-        // ok yeah it was these 2 lines that i had to create smh
+        // this is the list of containers
         sidebarContainer.appendChild(menuList);
+        sidebarContainer.appendChild(backButtonContainer);
+        sidebarContainer.appendChild(linksContainer);
         uiContainer.appendChild(sidebarContainer);
-        sidebarContainer.appendChild(backButton);
         uiContainer.appendChild(contentContainer);
 
         const tabToMatch = menuList.querySelector(`#${currentHash} .menu-option-content`);
@@ -1850,13 +2072,13 @@ async function initializeExtension() {
     observeContentChanges();
     startObserver();
     
-    if (window.location.href.includes('?rovalra=info')) {
+    if (window.location.href.includes('?rovalra=info')) { // ?rovalra=info
         startSettingsSync();
     }
 
     const observer = new MutationObserver((mutations) => {
         if (mutations.some(mutation => mutation.target.nodeName === 'TITLE')) {
-            if (window.location.href.includes('?rovalra=info')) {
+            if (window.location.href.includes('?rovalra=info')) { // ?rovalra=info
                 startSettingsSync();
             } else {
                 stopSettingsSync();

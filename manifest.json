@@ -60,6 +60,10 @@
   "web_accessible_resources": [
       {
           "resources": [
+              "Images/efefefe.png",
+              "Images/discord-white-icon.png",
+              "Images/github-icon.png",
+              "Images/github-icon-white.png",
               "HiddenGames/group_games.js",
               "HiddenGames/user_games.js",
               "misc/userSniper.js",
