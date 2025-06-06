@@ -23,7 +23,7 @@ const REGIONS = {
     "US-VA": { latitude: 38.9577, longitude: -77.1445, city: "Ashburn", state: "Virginia", country: "Estados Unidos" },
     "US-IL": { latitude: 41.8781, longitude: -87.6298, city: "Chicago", state: "Illinois", country: "Estados Unidos" },
     "US-TX": { latitude: 32.7767, longitude: -96.7970, city: "Dallas", state: "Texas", country: "Estados Unidos" },
-    "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami", state: "Florida", country: "Estados Unidos" },
+    "US-FL": { latitude: 25.7617, longitude: -80.1918, city: "Miami (Florida)", state: "Florida", country: "Estados Unidos" },
     "US-NY": { latitude: 40.7128, longitude: -74.0060, city: "Ciudad de Nueva York", state: "Nueva York", country: "Estados Unidos" },
     "US-WA": { latitude: 47.6062, longitude: -122.3321, city: "Seattle", state: "Washington", country: "Estados Unidos" }, 
     "AU": { latitude: -33.8688, longitude: 151.2093, city: "Sídney", state: null, country: "Australia" },
@@ -1020,6 +1020,10 @@ async function updateContent(buttonInfo, contentContainer, buttonData) {
     }
 }
 
+function normalizeTabName(name) {
+    return /^info(rmaci[oó]n)?$/i.test(name) ? 'información' : name.toLowerCase();
+}
+
 async function checkRoValraPage() {
     if (!window.location.href.includes('?rovalra=info')) { // ?rovalra=info
         isSettingsPage = false;
@@ -1032,7 +1036,14 @@ async function checkRoValraPage() {
         return;
     }
 
-    const currentHash = window.location.hash.replace('#!/', '').replace('#!', '') || 'información'; // info
+    let currentHash = window.location.hash.replace('#!/', '').replace('#!', '') || 'información';
+    if (currentHash === 'info') {
+    // Cambia el hash en la URL a 'información' automáticamente (esta mierda casi no hace nada, lo dejo como quiera)
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#!/información');
+        currentHash = 'información';
+    }
+    currentHash = normalizeTabName(currentHash);
+    
 
     window.removeEventListener('hashchange', handleHashChange);
     
@@ -1064,6 +1075,7 @@ async function checkRoValraPage() {
     let roproThemeFrameHTML = roproThemeFrame ? roproThemeFrame.outerHTML : '';
 
     containerMain.innerHTML = roproThemeFrameHTML;
+
 
     let reactUserAccountBaseDiv = document.createElement('div');
     reactUserAccountBaseDiv.id = 'react-user-account-base'
@@ -1330,7 +1342,7 @@ async function checkRoValraPage() {
             // TODO-NOTES: Woah, basically the information it gets brought up if you click RoValra's settings, so kewl
             // Start - Info section
             {
-                text: "ℹ️ Información", content: `
+                text: "Información", content: `
                    <div style="padding: 15px; border-radius: 8px;">
                    
                    <!-- Title: RoValra Information! -->
@@ -1356,13 +1368,12 @@ async function checkRoValraPage() {
                                 <!-- Feel free to report any bugs big or small to me on GitHub. -->
                                 <div style="margin-top: 5px;">
                                 <center><p style="; margin-top: 150px;" title="o sea, en el repositorio original de github. :v">¡No dudes en reportar fallos en nuestra página de GitHub!</p>
-                                <p style="; color: #abb2b9; font-size: 10px; margin-bottom: 10px;"> (NOTITA CHULA: ey, si vas a hacer esto, procura hablar en inglés, ya que el creador no habla español :P) </p></center>
+                                <p style="; color: #abb2b9; font-size: 10px; margin-bottom: 10px;"> (NOTITA CHULA: Ey, si vas a hacer esto, procura hablar en inglés, ya que el creador no habla español. Además, confirma si dicho error sale en la extensión original, usa tu sentido común. :P) </p></center>
                             </div>
                             <hr style="width: 300px; margin-top: 100px; margin-bottom: 20px;">
                     <!-- End of RoValra's Notes -->
 
                    <div style="margin-top: 10px; font-size: 15px;">
-                   <p style="; margin-top: 20px; margin-bottom: 20px; margin-left: 30px; margin-right: 30px;">Traducido por: Xontron en GitHub</p>
                    </div>
                </div>
                `},
@@ -1370,7 +1381,7 @@ async function checkRoValraPage() {
 
             // Start - Credits section
             {
-                text: "📃🙇‍♂️ Créditos", content: `
+                text: "Créditos", content: `
                     <div style="padding: 15px; border-radius: 8px;">
                         <!-- Credits Title: RoValra's Credits! -->
                             <h2 style="margin-bottom: 10px;">RoValra le complace a dar créditos a:</h2>
@@ -1487,7 +1498,7 @@ async function checkRoValraPage() {
         const menuList = document.createElement('ul');
         menuList.classList.add('menu-vertical');
         menuList.setAttribute('role', 'tablist');
-        menuList.style.width = '500px';
+        menuList.style.width = '350px';
 
         // create a container for the link buttons
         const linksContainer = document.createElement('div');
@@ -1534,6 +1545,7 @@ async function checkRoValraPage() {
         githubButton.addEventListener('click', () => {
             window.open('https://github.com/NotValra/RoValra', '_blank');
         });
+
 
         
 
@@ -1645,7 +1657,7 @@ async function checkRoValraPage() {
         translationButton.style.border = 'none';
         translationButton.style.padding = '13px 18px';
         translationButton.style.borderRadius = '30px';
-        translationButton.style.marginTop = '150px';
+        translationButton.style.marginTop = '90px';
         translationButton.style.marginLeft = '5px';
         translationButton.style.marginRight = '5px';
         translationButton.style.fontWeight = 'bold';
@@ -1654,6 +1666,30 @@ async function checkRoValraPage() {
         translationButton.addEventListener('click', () => {
             window.open('https://github.com/xontron/RoValra-Spanish-Translation', '_blank');
         });
+
+
+        // desplegar versiones blahblahblah
+            // version RoValra
+            // cuanta mierda
+            const verRVR = document.createElement('div');
+            verRVR.textContent = 'Versión de RoValra | 2.1.9';
+            verRVR.style.textAlign = 'center';
+            verRVR.style.marginTop = '20px';
+            verRVR.style.fontSize = '12px';
+
+            const verTR = document.createElement('div');
+            verTR.textContent = 'Versión de Traducción | v0.3.2';
+            verTR.style.textAlign = 'center';
+            verTR.style.marginTop = '5px';
+            verTR.style.fontSize = '12px';
+
+            const crTrad = document.createElement('div');
+            crTrad.textContent = 'Traductor | Xontron';
+            crTrad.style.textAlign = 'center';
+            crTrad.style.marginTop = '5px';
+            crTrad.style.fontSize = '12px';
+
+
 
 
         // another container lists 
@@ -1670,7 +1706,9 @@ async function checkRoValraPage() {
         linksContainer.appendChild(discordButton);
         linksContainer.appendChild(robloxButton);
         linksContainer.appendChild(translationButton);
-
+        linksContainer.appendChild(verRVR);
+        linksContainer.appendChild(verTR);
+        linksContainer.appendChild(crTrad);
 
 
         // creates a button so it can go back to my account settings, hell yeah
@@ -1679,7 +1717,7 @@ async function checkRoValraPage() {
         backButtonContainer.style.display = 'flex';
         backButtonContainer.style.flexDirection = 'column';
         backButtonContainer.style.alignItems = 'start'; // moves the button to the left but uhh, ill just move it anyway.
-        backButtonContainer.style.marginLeft = '200px';
+        backButtonContainer.style.marginLeft = '140px';
         backButtonContainer.style.marginTop = '35px'; // separates the menu
 
         const backButton = document.createElement('button');
@@ -1712,16 +1750,36 @@ async function checkRoValraPage() {
 
         backButtonContainer.appendChild(backButton);
 
-        // uh
+        // eh, creo que esto es para agregar acciones 
         buttonData.forEach((item, index) => {
             const listItem = document.createElement('li');
-            listItem.id = item.text.toLowerCase();
+            listItem.id = normalizeTabName(item.text);
             listItem.setAttribute('role', 'tab');
             listItem.classList.add('menu-option');
 
             const link = document.createElement('a');
             link.classList.add('menu-option-content');
             link.href = `#!/${item.text.toLowerCase()}`;
+
+            const tabToMatch = menuList.querySelector(`#${currentHash} .menu-option-content`);
+            if (tabToMatch) {
+                const item = buttonData.find(item => normalizeTabName(item.text) === currentHash);
+                if (item) {
+                    tabToMatch.classList.add('active');
+                    tabToMatch.setAttribute('aria-current', 'page');
+                    tabToMatch.closest('li').buttonData = item;
+                    const contentContainer = document.querySelector('#content-container');
+                    if (contentContainer) {
+                        updateContent(item, contentContainer, buttonData);
+                    }
+                }
+            } else {
+                // Selecciona el tab de información por defecto si no hay hash válido
+                const defaultTab = menuList.querySelector('#información .menu-option-content');
+                if (defaultTab) {
+                    defaultTab.click();
+                }
+            }
 
 
             // NOTE: it brings u back to the settings page, leave as is unless
@@ -1737,7 +1795,7 @@ async function checkRoValraPage() {
                     window.location.href = baseUrl;
                 });
             }
-            if (item.text.toLowerCase() === currentHash) {
+            if (normalizeTabName(item.text) === currentHash) {
                 link.classList.add('active');
                 link.setAttribute('aria-current', 'page');
             }
@@ -1962,30 +2020,28 @@ async function checkRoValraPage() {
         uiContainer.appendChild(sidebarContainer);
         uiContainer.appendChild(contentContainer);
 
-        const tabToMatch = menuList.querySelector(`#${currentHash} .menu-option-content`);
+        let tabToMatch = menuList.querySelector(`#${currentHash} .menu-option-content`);
+        if (!tabToMatch) {
+            // Si no hay hash válido, selecciona el tab de información
+            tabToMatch = menuList.querySelector('#información .menu-option-content');
+            history.replaceState(null, '', window.location.pathname + window.location.search + '#!/información');
+        }
         if (tabToMatch) {
-            const item = buttonData.find(item => item.text.toLowerCase() === currentHash);
+            const item = buttonData.find(item => normalizeTabName(item.text) === normalizeTabName(tabToMatch.closest('li').id));
             if (item) {
+                // Quita la clase active de todos los tabs
+                menuList.querySelectorAll('.menu-option-content').forEach(el => {
+                    el.classList.remove('active');
+                    el.removeAttribute('aria-current');
+                });
                 tabToMatch.classList.add('active');
                 tabToMatch.setAttribute('aria-current', 'page');
                 tabToMatch.closest('li').buttonData = item;
-                
-                const contentContainer = document.querySelector('#content-container');
-                if (contentContainer) {
-                    // Seperara
-                    if (currentHash === 'settings') {
-                        contentContainer.innerHTML = item.content;
-                    } else {
-                        updateContent(item, contentContainer, buttonData);
-                    }
-                }
-            }
-        } else {
-            const defaultTab = menuList.querySelector('#info .menu-option-content');
-            if (defaultTab) {
-                defaultTab.click();
+                updateContent(item, contentContainer, buttonData);
             }
         }
+
+        
         
         settingsContainer.insertAdjacentElement("afterbegin", rovalraHeader);
         await applyTheme();

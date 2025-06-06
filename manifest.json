@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "RoValra - Mejorando Roblox",
   "version": "2.1.9",
-  "description": "An extension aiming to provide features that other Roblox extensions pay wall!",
+  "description": "¡Una extensión cuyo propósito es traer ciertas funciones que otras extensiones de Roblox hacen pagar!",
   "content_scripts": [
     {
       "matches": [

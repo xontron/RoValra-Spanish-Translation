@@ -157,11 +157,12 @@ function removeHiddenCatalogContent() {
             header.style.fontSize = '2em';
             header.style.margin = '0';
 
-            headerContainer.appendChild(header);
+        
 
             const headerIcon = document.createElement('img');
             headerIcon.src =  chrome.runtime.getURL("Assets/icon-128.png");
             headerIcon.alt = 'Hidden Catalog Icon';
+            headerIcon.title = 'jejejejejeje';
             headerIcon.style.width = '32px';
             headerIcon.style.height = '32px';
             headerIcon.style.verticalAlign = 'middle';
@@ -170,6 +171,7 @@ function removeHiddenCatalogContent() {
             headerContainer.appendChild(headerIcon);
 
             contentDiv.appendChild(headerContainer);
+            headerContainer.appendChild(header);
 
             const descriptionElement = document.createElement('div');
             descriptionElement.id = 'hidden-catalog-description';
@@ -462,7 +464,7 @@ async function displayItems(itemsWithDetails) {
         toggleButton.style.borderRadius = '0px';
         toggleButton.style.color = '#666';
         toggleButton.textContent = '↺';
-        toggleButton.title = 'Toggle original name';
+        toggleButton.title = 'Mostrar nombre original';
 
         if (item.details && item.details.Name && item.details.Name !== item.name) {
             itemName.textContent = item.details.Name;
@@ -545,6 +547,7 @@ async function displayItems(itemsWithDetails) {
 
             const item = itemsWithDetails[index];
 
+            //si dicho objeto esta disponible en la tienda, entoncecs desplegar Ya lanzado
             if (item.details && item.details.ProductId !== 0) {
                 const releasedLabel = document.createElement('div');
                 releasedLabel.textContent = 'Ya lanzado'; // Released
